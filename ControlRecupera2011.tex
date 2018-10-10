@@ -1,0 +1,265 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[activeacute,spanish]{babel}
+\usepackage[left=1.8cm,top=1cm,right=1.8cm, bottom=1cm,letterpaper, includeheadfoot]{geometry}
+\usepackage{framed}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx,txfonts}
+\usepackage{lmodern,url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{epigraph}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\floatname{algorithm}{Algoritmo}
+
+\makeatletter
+
+
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} 
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\footnotesize\itshape\bfseries\rightmark}
+    \rhead{\footnotesize\itshape\bfseries\leftmark}
+    }
+
+\setlength{\parindent}{1cm}
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+% macros
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\U}{\mathcal U}
+\newcommand{\ssi}{\Longleftrightarrow} %si y solo si
+\newcommand{\To}{\Rightarrow}      %implica
+\newcommand{\tq}{\mid }            % tal que
+\newcommand{\exclusivo}{\veebar }  % o exclusivo
+\renewcommand{\vec}[2]{\left(\begin{array}{c}{#1}\\{#2}\end{array}\right)}
+\newcommand{\texii}[2]{\begin{minipage}{0.5\textwidth} #1 \end{minipage}  
+                     \begin{minipage}{0.5\textwidth} #2 \end{minipage}}
+
+%%%operadores matematicos
+\providecommand{\abs}[1]{\lvert#1 \rvert}
+\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\newtheorem{prob}{Problema Controlable}
+\newtheorem{nota}{Notaci\'on}
+\newtheorem{obs}{Observaci\'on}
+
+%%%%%%% inicio documento %%%%%%%
+\begin{document}
+
+%============Encabezado estandar============
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Facultad de Ciencias Físicas y Matemáticas}}
+\fancyhead[R]{\textit{Universidad de Chile}}
+
+\begin{wrapfigure}{R}{0.2\textwidth} %this figure will be at the right
+    \vspace{-5mm}
+    \includegraphics[width=0.2\textwidth]{img/fcfm2.png}
+\end{wrapfigure}
+
+
+\noindent
+\textbf{MA1101-1 Introducción al Álgebra}\\
+\textbf{Profesor: }Leonardo Sánchez C.\\
+\textbf{Auxiliar: }Marcelo Navarro
+
+\begin{center}
+{\bf \Large Control Recuperativo 2011} \\
+{07 de Junio de 2018}
+\end{center}
+
+\begin{enumerate}[\bf P1.]
+
+\item Demuestre por inducción que
+    \begin{enumerate}
+        \item $\displaystyle \forall n\in \N, n\geq 1, \frac{1}{n+1}+\frac{1}{n+2}+\dots+\frac{1}{2n+1}\leq \frac{5}{6}$
+        \item Sea $k_0\in \N$ un número natural fijo cualquiera y $n\in \N$ un número impar cualquiera, demuestre sin uso de inducción que la suma de los $n$ naturales consecutivos a partir de $k_0$ es divisible por $n$.
+    \end{enumerate}
+
+\item Se define en $\Z \times \Z \setminus \{0\}$ la relación $\rho$ por $(x,y)\rho (z,t) \ssi xt=zy$
+    \begin{enumerate}
+        \item Demuestre que $\rho$ es de equivalencia y describa explícitamente $[(0,1)]$ y $[(3,3)]$.
+        \item Sea $f: \Z \times \Z \setminus \{0\} \to \Q$ dada por
+            $$f(x,y)=\frac{x}{y}$$
+            Demuestre que $(x,y)\rho (z,t) \ssi f(x,y)=f(z,t)$
+        \item Demuestre que la función $F: (\Z \times \Z \setminus \{0\})/_{\rho} \to \Q$ dada por
+            $$F([(x,y)])=f(x,y)$$
+            es biyectiva
+    \end{enumerate}
+\end{enumerate}
+
+\begin{center}
+    \LARGE \bf Aritmética Modular
+\end{center}
+\begin{enumerate}
+\item[\bf P3.] ¿Es posible encontrar un entero que sea un cuadrado perfecto, que sea divisible por 2 pero no divisible por 4?
+\item[\bf P4.] 
+    Sea $n$ un natural mayor o igual que dos. Si $x$ es una solución entera no trivial de la ecuación \\$x^2=1 ~ (mod~ n)$, es decir $x\in \Z$, $x\neq 1 ~(mod~ n)$ y $x\neq -1~ (mod~ n)$.
+    \begin{enumerate}
+        \item Probar que $n$ divide a $(x-1)(x+1)$
+        \item Si $n$ es un número primo, probar que no existen soluciones enteras no triviales de la ecuación.
+        \item Probar que si $n=p\cdot q$, donde $p$ y $q$ son números enteros primos distintos, entonces el\\ $MCD(n,x+1) \in \{p,q\}$, donde $MCD$ es el máximo común divisor.
+    \end{enumerate}
+    
+    Hint: \textit{teorema fundamental de la aritmética: todo número natural mayor que 1 es un primo o bien se puede representar por un único producto de primos (estos primos se pueden repetir)}
+\end{enumerate}
+
+
+\newpage 
+
+\begin{center}
+    Soluciones Aritmética Modular
+\end{center}
+
+\begin{enumerate}
+\item[\bf P3.] Planteemos una ecuación que nos ayude a interpretar lo que nos piden.
+
+En primer lugar nos piden encontrar un cuadrado perfecto, que podemos denotarlo por $x^2$, tal que sea divisible por 2 pero no divisible por 4. Esto ultimo lo podemos ver con ayuda de escribir la secuencia de números que lo cumplen. 
+
+Notar que los números que cumplen la propiedad pedida son:
+
+$$2,6,10,14,18,22,\dots$$
+
+Una forma de escribirlos puede ser $2+4n, ~ n\in \N$, claramente este número es divisible por $2$ y no es divisible por $4$.
+
+Ahora juntando todo, planteamos la siguiente ecuación:
+
+$$ x^2=2+4n $$
+
+Pero hay un gran problema, tenemos una ecuación y hay $1$ incógnita y una variable que puede recorrer todo $\N$. Lo que haremos será ``aplicar" modulo congruencia $4$ en la igualdad anterior.
+
+por lo que obtenemos lo siguiente:
+\begin{align*} 
+ & x^2=2+4n  \\ 
+\Longrightarrow  & x^2= 2+4n \ (mod ~ 4)\\
+\Longleftrightarrow  & x^2\equiv_{4} 2+4n \\
+\Longleftrightarrow  & x^2\equiv_{4} 2 \\
+\end{align*}
+
+Y esto ultimo es una ecuación modular.
+
+Veamos como se resuelve este tipo de ecuación y si es que tiene solución.
+
+Una ecuación del estilo $x\equiv_n a$ tiene como solución los elementos del conjunto $\{x\in \Z : x \equiv_n a\}$ ¿A qué se parece esto?. Bueno, es la clase de equivalencia de $a$ por lo que podemos decir que la solución es $[a]_{\equiv_n}$.
+
+Volvamos al problema...
+
+tenemos que ver si $x^2\equiv_{4} 2 $ tiene solución. En este caso, lo que haremos es \textbf{probar todos los enteros}, oye pero Marcelo, los enteros son infinitos... ¿como los probaremos todos? Tranquilo estimado estudiante, probaremos todos los enteros ya que gracias a las clases de equivalencia sabremos como se comportan todos los números en base a los representantes de su clase.
+
+En modulo congruencia 4, tenemos las siguientes 4 clases de equivalencia
+
+$[0]=\{x\in \Z : x \equiv_4 0\}=\{ x\in \Z  : x=4k, k\in \Z\}=\{0,-4,4,-8,8,-16,16,\dots \}$\\
+$[1]=\{x\in \Z : x \equiv_4 1\}=\{ x\in \Z  : x=4k+1, k \in \Z\}$\\
+$[2]=\{x\in \Z : x \equiv_4 2\}=\{ x\in \Z  : x=4k+2, k \in \Z\}$\\
+$[3]=\{x\in \Z : x \equiv_4 3\}=\{ x\in \Z  : x=4k+3, k \in \Z\}$
+
+Por lo que debemos probar 4 números en total para ir tanteando cual es la solución. Lo que haremos será del siguiente estilo. Si tienen una ecuación de la forma $3x=12$, vamos a ir probando si $x=1$ sirve, o bien $x=2$ sirve, así hasta encontrar la solución.
+
+Bueno tenemos 4 casos para resolver la ecuación $x^2\equiv_{4} 2$:
+
+\begin{itemize}
+    \item \text{[Caso $x\in [0]$]}: Aquí podemos tomar el representante (pues todos los elementos harían lo mismo en la ecuación, ya que están en la misma clase). Si $x=0$, reemplazando en la ecuación nos queda que
+    $$0^2\equiv_{4} 2  \iff 0 \equiv_4 2$$
+    Lo cual es falso, ya que $0\in [0]$ y $2 \in [2]$ y las clases son distintas. Por lo que descartamos que haya alguna solución de la ecuación en este caso.
+    
+    \item \text{[Caso $x\in [1]$]}: Idéntico a lo anterior, si $x=1$, reemplazamos en la ecuación y obtenemos 
+    $$ 1^2\equiv_{4} 2  \iff 1 \equiv_4 2$$
+    Lo cual es falso, ya que $1\in [1]$ y $2 \in [2]$ y las clases son distintas. Se descarta solución.
+    
+    \item \text{[Caso $x\in [2]$]}: Idéntico a lo anterior, si $x=2$, reemplazamos en la ecuación y obtenemos 
+    $$ 2^2\equiv_{4} 2  \iff 4 \equiv_4 2 \iff 0 \equiv_4 2$$
+    Lo cual es falso, ya que es el mismo caso que en el primero punto. Se descartan soluciones en este caso.
+    
+    \item \text{[Caso $x\in [3]$]}: Idéntico a lo anterior, si $x=3$, reemplazamos en la ecuación y obtenemos 
+    $$ 3^2\equiv_{4} 2  \iff 9 \equiv_4 2 \iff 8+1 \equiv_4 2 \iff 1 \equiv_4 2$$
+    Lo cual es falso, ya que es lo mismo que el segundo punto. Se descarta encontrar soluciones en este caso.
+\end{itemize}
+
+Luego de probar todos los casos, ninguno nos sirvió para encontrar un valor $x$ que solucione la ecuación $x^2 \equiv_4 2$. Por lo que no hay solución y, en virtud de esto, no existe número entero que cumpla que sea un cuadrado perfecto, múltiplo de $2$ y no múltiplo de $4$, ya que si existiera seria solución de la ecuación planteada.
+
+
+\item[\bf P4.] 
+\begin{enumerate}
+    \item En efecto, como $x^2=1 ~ (mod ~n)$ es lo mismo que $x^2 \equiv_n 1$, y por definición
+    $$x^2 \equiv_n 1 \iff x^2-1=nk, ~ k \in \Z$$
+    Esto ultimo indica que que $n$ es multiplo de $x^2-1$ o bien divide a $x^2-1$. Se concluye factorizando la diferencia de cuadrados.
+    $$n ~|~ x^2-1 \iff n ~|~(x-1)(x+1)$$
+     
+    Donde $a ~|~ b$ significa que $a$ divide a $b$
+     
+    \item Por contradicción, sea $n$ primo y sea $x \in \Z$ una solución no trivial de la ecuación $x^2=1 ~ (mod ~n)$. 
+    
+    Por $a)$, sabemos que $$n ~|~ (x+1)(x-1)$$.
+    
+    Ahora bien, si $n$ divide al producto $(x+1)(x-1)$ pueden sucedes muchas cosas
+    \begin{enumerate}
+        \item $n$ divide a $(x+1)(x-1)$ pero no a $(x+1)$ o $(x-1)$ en solitario.
+        
+        Por ejemplo 6 divide a $3\cdot2$ pero no divide a $3$ ni a $2$.
+        \item $n$ divide solamente a $(x+1)$.
+        \item $n$ divide solamente a $(x-1)$.
+        \item $n$ divide a $(x+1)$ y simultáneamente a $(x-1)$.
+    \end{enumerate}
+    
+    El caso $1$ se descarta, ya que, por hipotesis, $n$ es primo por lo que no se puede generar por producto de dos números (como ocurre con el ejemplo dado). Luego los casos restantes son validos y pueden llegar a ocurrir, por lo que se puede concluir que 
+    
+    $$ n~ | ~ (x+1) ~~~\lor~~~ n~ | ~ (x-1) $$
+    
+    Esto abarca los casos validos (verificar).
+    
+    Luego, sin perdida de generalidad, supongamos que se cumple que $n~ | ~ (x-1)$, esto significa que $x-1=nk, k\in \Z$, o equivalentemente, $x\equiv_n 1$. Es decir, $x$ es solución trivial del problema, lo que es una contradicción ya que asumimos que $x$ es solución no trivial. Analize usted el caso de que $ n~ | ~ (x-1)$.
+    
+    Por lo tanto, Se cumple lo que habia que probar.
+    
+    \item En efecto, sea $n=pq$. Por $a)$ sabemos que $n~|~(x-1)(x+1)$. Luego por $b)$ sabemos que $n$ tiene que dividir a $(x-1)(x+1)$ pero no a $(x+1)$ o $(x-1)$ en solitario, ya que si esto ultimo ocurriera, $x$ seria solución trivial de la ecuación.
+    
+    Por lo tanto, $n~|~(x-1)(x+1)$ o bien $pq~|~(x-1)(x+1)$. Luego, debido a lo anterior, debe ocurrir que o bien $p$ o bien $q$ divida solamente a $(x-1)$ y el restante divida a $(x+1)$. En virtud del teorema fundamental de la aritmética, si $(x+1)=r_{1}r_{2}\dots r_{\ell}$ es su descomposición prima, y si $p$ divide a $(x+1)$, como $p$ es primo, $p$ debe aparecer en la descomposición prima de $(x+1)$ es decir $p=r_j$ para algún $j\in \{1, \dots, \ell\}$. Luego $p$ divide a $(x+1)$, donde en la descomposición prima de $(x+1)$ aparece $p$.
+    
+    Luego el $MCD(n,x+1)=p$ ya que $p$ divide a $n$ directamente y $x+1$ tiene como factor dentro de su descomposición prima a $p$.
+    
+    Finalmente, si intercambiamos roles entre $p$ y $q$ (es decir, si en vez de suponer que $p$ divide a $(x+1)$, suponemos que $q$ divide a $(x+1)$). Se concluye que $MCD(n,x+1)\in \{p,q\}$
+\end{enumerate}
+    
+\end{enumerate}
+
+
+\end{document}

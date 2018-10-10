@@ -1,0 +1,278 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[activeacute,spanish]{babel}
+\usepackage[left=1.8cm,top=1cm,right=1.8cm, bottom=1cm,letterpaper, includeheadfoot]{geometry}
+\usepackage{framed}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx,txfonts}
+\usepackage{lmodern,url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{epigraph}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\floatname{algorithm}{Algoritmo}
+
+\makeatletter
+
+
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} 
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\footnotesize\itshape\bfseries\rightmark}
+    \rhead{\footnotesize\itshape\bfseries\leftmark}
+    }
+
+\setlength{\parindent}{1cm}
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+% macros
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\U}{\mathcal U}
+\newcommand{\ssi}{\Longleftrightarrow} %si y solo si
+\newcommand{\To}{\Rightarrow}      %implica
+\newcommand{\tq}{\mid }            % tal que
+\newcommand{\exclusivo}{\veebar }  % o exclusivo
+\renewcommand{\vec}[2]{\left(\begin{array}{c}{#1}\\{#2}\end{array}\right)}
+\newcommand{\texii}[2]{\begin{minipage}{0.5\textwidth} #1 \end{minipage}  
+                     \begin{minipage}{0.5\textwidth} #2 \end{minipage}}
+
+%%%operadores matematicos
+\providecommand{\abs}[1]{\lvert#1 \rvert}
+\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+
+%Teoremas, Lemas, etc.
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\newtheorem{prob}{Problema Controlable}
+\newtheorem{nota}{Notaci\'on}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{defi}{Definición}[section]
+\setcounter{section}{1}
+%%%%%%% inicio documento %%%%%%%
+\begin{document}
+
+%============Encabezado estandar============
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Facultad de Ciencias Físicas y Matemáticas}}
+\fancyhead[R]{\textit{Universidad de Chile}}
+
+\begin{wrapfigure}{R}{0.2\textwidth} %this figure will be at the right
+    \vspace{-5mm}
+    \includegraphics[width=0.2\textwidth]{img/fcfm2.png}
+\end{wrapfigure}
+
+
+\noindent
+\textbf{MA1101-1 Introducción al Álgebra}\\
+\textbf{Profesor: }Leonardo Sánchez C.\\
+\textbf{Auxiliar: }Marcelo Navarro
+
+\begin{center}
+{\bf \Large Pauta P5 - Auxiliar 7: Relaciones}\\
+{12 de Mayo de 2018}
+\end{center}
+
+\begin{enumerate}[\bf P5.]
+    \item \textbf{[Aplicación de Relaciones: Teoria de la Computación]} El objetivo de esta pregunta es ver una de las aplicaciones de las clases de equivalencia en el campo de la teoría de la computación, particularmente en autómatas finitos y maquinas de Turing.
+        \begin{defi}[Símbolo]
+        Se define un símbolo como un carácter cualquiera. Por ejemplo: $a,1,\heart,etc$. 
+        \end{defi}
+        
+        \begin{defi}[String]
+            Se define un string o palabra como una secuencia de símbolos o bien, un símbolo. Por ejemplo: $a,b,hola,aabba,00010,101,\heart \heart 0a,etc$.
+            También se define el string vació '$\varepsilon$', como aquel string que simplemente no hace nada a dentro de una secuencia. Ejemplo: $'hola\varepsilon'='hola'$.
+        \end{defi}
+        
+        \begin{defi}[Concatenación]
+        Dados dos strings $'a'$ y $'b'$, se define la concatenación entre $'a'$ y $'b'$ como $'a\cdot b'$ o bien $'ab'$, donde simplemente se ha puesto al final de $'a'$, el string $'b'$. Por ejemplo: la concatenación entre $'hol'$ y $'a'$ es $'hola'$. 
+        \end{defi}
+        
+        \begin{defi}[Alfabeto] 
+        Se define un alfabeto como un conjunto de símbolos, lo denotaremos por $\Sigma$.
+        \end{defi}
+        
+        \begin{defi}
+        Se define $\Sigma^*$ como el conjunto de todas las palabras o strings que se pueda formar a partir de los símbolos en $\Sigma$.\\
+        Por ejemplo si $\Sigma=\{a,b\}$ entonces $\Sigma^*=\{\varepsilon, a,b,aa,bb,ab,ba,aaa,\dots, aababbabb,\dots \}$.\\
+        Este conjunto se define recursivamente por.
+            \begin{itemize}
+                \item $\varepsilon \in \Sigma^*$
+                \item $w \in \Sigma^*$ y $a \in \Sigma \Rightarrow wa\in \Sigma^*$
+            \end{itemize}
+        \end{defi}
+        
+        \begin{defi}[Lenguaje]
+            Definimos un Lenguaje $L$, como un subconjunto de $\Sigma^*$, es decir, $\emptyset \subseteq L \subseteq \Sigma^*$.
+        \end{defi}
+        
+    Sea el alfabeto $\Sigma=\{0,1\}$ y sea $L\subseteq \Sigma^*$ un lenguaje cualquiera. se define la relación $\equiv_L$ sobre $\Sigma^*$ tal que
+        $$ x\equiv_Ly \iff [\forall z\in \Sigma^*, xz \in L \Leftrightarrow yz\in L]$$
+    
+    Es decir, en $\equiv_L$ viven todas las parejas de palabras que les falta lo mismo para vivir en $L$.
+    \begin{enumerate}
+        \item Demuestre que $\equiv_L$ es una relación de equivalencia.
+        \item Considere ahora $L=\{w \in \Sigma^* : w \text{ contiene } 001 \text{ como un substring } \}$. Calcule $\Sigma^*/\equiv_L$.
+        \item Dibuje una maquina de estados y transiciones que acepte al lenguaje $L$, donde una palabra $w$ se ira leyendo de izquierda a derecha, caracter por caracter, y dependiendo del caracter leido se escoge a que estado ir de la maquina (esto lo definimos como una transición). La maquina termina de procesar cuando se termina el string, y se dice que la maquina acepta un string si la maquina termina en un estado de aceptación. 
+        Por ejemplo, la maquina para el lenguaje que contiene al menos un $a$ es:
+        
+        \begin{center}
+            \begin{tikzpicture}[scale=0.2]
+            \tikzstyle{every node}+=[inner sep=0pt]
+            \draw [black] (25.1,-25.9) circle (3);
+            \draw (25.1,-25.9) node {$q_0$};
+            \draw [black] (36.8,-25.9) circle (3);
+            \draw (36.8,-25.9) node {$q_1$};
+            \draw [black] (36.8,-25.9) circle (2.4);
+            \draw [black] (16.2,-25.9) -- (22.1,-25.9);
+            \draw (15.7,-25.9) node [left] {$w$};
+            \fill [black] (22.1,-25.9) -- (21.3,-25.4) -- (21.3,-26.4);
+            \draw [black] (28.1,-25.9) -- (33.8,-25.9);
+            \fill [black] (33.8,-25.9) -- (33,-25.4) -- (33,-26.4);
+            \draw (30.95,-26.4) node [below] {$a$};
+            \draw [black] (39.194,-24.112) arc (154.49148:-133.50852:2.25);
+            \draw (44.16,-24.4) node [right] {$a,b$};
+            \fill [black] (39.68,-26.71) -- (40.18,-27.51) -- (40.61,-26.61);
+            \draw [black] (23.319,-23.5) arc (244.30485:-43.69515:2.25);
+            \draw (23.4,-18.67) node [above] {$b$};
+            \fill [black] (25.92,-23.03) -- (26.72,-22.52) -- (25.82,-22.09);
+            \end{tikzpicture}
+        \end{center}
+        
+        Donde el estado de aceptación es $q_1$.
+    \end{enumerate} 
+\end{enumerate}
+ 
+    \begin{framed}
+        Solución \textbf{P5}:
+        
+        \begin{enumerate}
+            \item[\textit{a})]
+                \begin{itemize}
+                    \item refleja: sea $x\in \Sigma^*$, se tiene que $\forall z\in \Sigma^*, xz\in L \Leftrightarrow xz \in L$ ya que $p\Leftrightarrow p$ es siempre verdadera, es decir $x \equiv_L x$.
+                    \item simetrica: sea $x,y \in \Sigma^*$ tal que $x \equiv y \iff \forall z\in \Sigma^*, xz \in L \Leftrightarrow yz \in L$. Esto ultimo es equivalente a que $yz \in L \Leftrightarrow xz \in L \iff y \equiv_L x$, ya que $p\Leftrightarrow q$ es equivalente a $q\Leftrightarrow p$. Como es equivalencia, en particular se tiene la implicancia. Por lo tanto es simetrica.
+                    \item Transitiva: sea $x,y,w \in \Sigma^*$ tal que $x\equiv_L y \land y \equiv_L w$ que equivale a  que $\forall z\in \Sigma^*$ se tiene que $xz \in L \Leftrightarrow yz \in L$ y $yz \in L \Leftrightarrow wz \in L$. Luego se tiene que  $xz \in L \Leftrightarrow wz \in L$ por transitivadd de la equivalencia, esto ultimo es que $x \equiv_L w$, por lo tanto es transitiva.
+                \end{itemize}
+                
+            \item[\textit{b})]
+                De acuerdo al enunciado, $x\equiv_L y$ significa que a $x$ y a $y$ le falta lo mismo para estar en $L$. Por lo que podemos pensar inmediatamente en la clase de equivalencia de las palabras que ya cumplen la condición de estar en $L$.
+                
+                    $$L_{[001]}=\{w \in \Sigma^*: w \text{ tiene } 001  \text{ como un substring }\}$$
+                
+                En este conjunto estan los elementos 001, 0001, 0\dots001, 1001, 11001101, etc. Ya que si comparo cualquier par de estos strings, ya estan en L por lo que directamente les falta lo mismo para estar en L (pues ya viven ahi).
+                
+                Ahora nos falta ver las clases de equivalencia de las palabras que no estan en $L$. Como ya estamos en el caso de las palabras que no estan en $L$, podemos enfocarnos solo en las ultimos simbolos de los strings ya que solo dependen de la concatenación para llegar a estar en $L$.
+                
+                Por ejemplo, notemos que $00 \equiv_L 1110100$ ya que ambas necesitan un $1$ para pertenecer a $L$, esto se puede seguir haciendo y se puede concluir la siguiente clase de equivalencia.
+                    $$L_{[00]}=\{ w\in \Sigma^* : w \text{ termina en } 00 \text{ y no tiene el substring } 001\}$$
+                    
+                Luego, siguiendo la misma lógica, podemos pensar en las palabras que terminan en $01$ o en $10$, luego de estudiar un poco, podemos notar que que $01$ y $10$ necesitan cosas distintas para terminar en $L$, por ejemplo $10$ necesita un $01$ para quedar en $L$ pero $01$ no le sirve a $01$. por lo que son clases distintas. Entonces tenemos la clase de los que terminan en $0$ y los que terminan en $1$.
+                    $$L_{[0]}= \{ w\in \Sigma^* : w \text{ termina en } 0 \text{ y su penultima letra no es }0 \text{ y no tiene el substring } 001\}$$
+                    $$L_{[1]}= \{ w\in \Sigma^* : w \text{ termina en } 1 \text{ o } \varepsilon  \text{ y no tiene el substring } 001\}$$
+                
+                Notar que en la ultima clase se incluyo a las palabras vacías debido a que necesitan lo mismo que las palabras que terminan en 1.
+                
+                Queda de tarea comprobar que no hay más clases de equivalencias.
+                
+            \item[\textit{c})] El string $w$ entra a la maquina, la maquina irá leyendo desde izquierda a derecha cada carácter del string. Entra al estado $[1]$, si lee un $1$ (su primer carácter) se mantiene en $[1]$ ya que el ultimo carácter visto es $1$ y entra en la definición de las clases de equivalencia que vimos, si ve un $0$ vamos a estar más cerca de estar en $[001]$, por lo que avanzamos a $[0]$.
+            
+            Si estamos en $[0]$ y el siguiente carácter es un $1$ debemos retroceder ya que estaríamos en las mismas condiciones de al principio, es decir, el ultimo carácter es $1$. En caso de ver un $0$ entonces estamos más cerca de estar en $[001]$ por lo que nos vamos al estado $[00]$.
+            
+            Si estamos en $[00]$, solo nos falta un $1$ para llegar al estado $[001]$ por lo que nos iremos a este estado si leemos un $1$. Por el contrario si leemos un $0$ nos quedamos donde mismo pues aun tenemos $00$ al final del string.
+            
+            Finalmente, estando en el estado $[001]$ que representa el estado de aceptación (si termina el string y el ultimo estado es este, la maquina ha aceptado al string), da lo mismo que simbolo venga, ya tenemos el substring $001$ por lo que se quedará ahi por siempre.
+                
+                \begin{center}
+                    \begin{tikzpicture}[scale=0.2]
+                        \tikzstyle{every node}+=[inner sep=0pt]
+                            \draw [black] (12.3,-25.3) circle (3);
+                            \draw (12.3,-25.3) node {$[1]$};
+                            \draw [black] (25.8,-25.4) circle (3);
+                            \draw (25.8,-25.4) node {$[0]$};
+                            \draw [black] (38.4,-25.3) circle (3);
+                            \draw (38.4,-25.3) node {$[00]$};
+                            \draw [black] (50.9,-25.3) circle (3);
+                            \draw (50.9,-25.3) node {$[001]$};
+                            \draw [black] (50.9,-25.3) circle (2.4);
+                            \draw [black] (23.47,-27.268) arc (-60.85335:-119.99546:8.985);
+                            \fill [black] (23.47,-27.27) -- (22.53,-27.22) -- (23.01,-28.09);
+                            \draw (19.03,-28.91) node [below] {$0$};
+                            \draw [black] (28.8,-25.38) -- (35.4,-25.32);
+                            \fill [black] (35.4,-25.32) -- (34.6,-24.83) -- (34.6,-25.83);
+                            \draw (32.1,-25.86) node [below] {$0$};
+                            \draw [black] (41.4,-25.3) -- (47.9,-25.3);
+                            \fill [black] (47.9,-25.3) -- (47.1,-24.8) -- (47.1,-25.8);
+                            \draw (44.65,-25.8) node [below] {$1$};
+                            \draw [black] (13.623,-27.98) arc (54:-234:2.25);
+                            \draw (12.3,-32.55) node [below] {$1$};
+                            \fill [black] (10.98,-27.98) -- (10.1,-28.33) -- (10.91,-28.92);
+                            \draw [black] (14.539,-23.327) arc (121.3804:57.77079:8.587);
+                            \fill [black] (14.54,-23.33) -- (15.48,-23.34) -- (14.96,-22.48);
+                            \draw (19.08,-21.56) node [above] {$1$};
+                            \draw [black] (52.744,-22.948) arc (169.64101:-118.35899:2.25);
+                            \draw (57.69,-21.31) node [right] {$0,1$};
+                            \fill [black] (53.89,-25.33) -- (54.59,-25.97) -- (54.76,-24.98);
+                            \draw [black] (37.077,-22.62) arc (234:-54:2.25);
+                            \draw (38.4,-18.05) node [above] {$0$};
+                            \fill [black] (39.72,-22.62) -- (40.6,-22.27) -- (39.79,-21.68);
+                            \draw [black] (37.077,-22.62) arc (234:-54:2.25);
+                            \fill [black] (39.72,-22.62) -- (40.6,-22.27) -- (39.79,-21.68);
+                            \draw [black] (4.5,-25.3) -- (9.3,-25.3);
+                            \draw (4,-25.3) node [left] {$w$};
+                            \fill [black] (9.3,-25.3) -- (8.5,-24.8) -- (8.5,-25.8);
+                    \end{tikzpicture}
+                \end{center}
+                 Y con esto, hemos construido nuestro primer autómata finito determinista que da la base para estudiar la teoría de la computación y empezar a formalizar sobre que maquinas son más fuerte que otras y en particular, la maquina más fuerte y que jamás va a ser superada (y la cual tenemos hoy en nuestros computadores), la maquina de Turing.
+            \end{enumerate}
+            
+           
+            
+    \end{framed}
+
+
+\end{document}

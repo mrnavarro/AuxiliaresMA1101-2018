@@ -1,0 +1,248 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[activeacute,spanish]{babel}
+\usepackage[left=1.8cm,top=1cm,right=1.8cm, bottom=1cm,letterpaper, includeheadfoot]{geometry}
+\usepackage{framed}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{lmodern,url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{epigraph}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\floatname{algorithm}{Algoritmo}
+
+\makeatletter
+
+
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} 
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\footnotesize\itshape\bfseries\rightmark}
+    \rhead{\footnotesize\itshape\bfseries\leftmark}
+    }
+
+\setlength{\parindent}{1cm}
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+% macros
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\U}{\mathcal U}
+\newcommand{\ssi}{\Longleftrightarrow} %si y solo si
+\newcommand{\To}{\Rightarrow}      %implica
+\newcommand{\tq}{\mid }            % tal que
+\newcommand{\exclusivo}{\veebar }  % o exclusivo
+\renewcommand{\vec}[2]{\left(\begin{array}{c}{#1}\\{#2}\end{array}\right)}
+\newcommand{\texii}[2]{\begin{minipage}{0.5\textwidth} #1 \end{minipage}  
+                     \begin{minipage}{0.5\textwidth} #2 \end{minipage}}
+
+%%%operadores matematicos
+\providecommand{\abs}[1]{\lvert#1 \rvert}
+\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\newtheorem{prob}{Problema Controlable}
+\newtheorem{nota}{Notaci\'on}
+\newtheorem{obs}{Observaci\'on}
+
+%%%%%%% inicio documento %%%%%%%
+\begin{document}
+
+%============Encabezado estandar============
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Facultad de Ciencias Físicas y Matemáticas}}
+\fancyhead[R]{\textit{Universidad de Chile}}
+
+\begin{wrapfigure}{R}{0.2\textwidth} %this figure will be at the right
+    \vspace{-5mm}
+    \includegraphics[width=0.2\textwidth]{img/fcfm2.png}
+\end{wrapfigure}
+
+
+\noindent
+\textbf{MA1101-1 Introducción al Álgebra}\\
+\textbf{Profesor: }Leonardo Sánchez C.\\
+\textbf{Auxiliar: }Marcelo Navarro
+
+\begin{center}
+{\bf \Large Auxiliar 1: Lógica y Cuantificadores}\\
+{28 de Marzo de 2018}
+\end{center}
+
+\begin{framed}
+		\begin{multicols}{2}
+			\begin{itemize}
+			    \item Una proposición lógica es un enunciado que toma un valor de verdad $V$ o $F$.
+				\item Los conectivos lógicos son operaciones entre proposiciones y permiten construir nuevas proposiciones a partir de proposiciones ya conocidas.
+				\item Las tablas de verdad de las proposiciones básicas son:
+				$$
+				\begin{array}{|c||c|}
+				\hline p &  \overline p \\ 
+				\hline V & F \\ 
+				\hline F & V \\ 
+				\hline 
+				\end{array} \hspace{5 mm}\begin{array}{|c|c||c|}
+				\hline p & q & p \vee q \\ 
+				\hline V & V & V \\ 
+				\hline V & F & V \\ 
+				\hline F & V & V \\ 
+				\hline F & F & F \\ 
+				\hline 
+				\end{array} \hspace{5 mm}\begin{array}{|c|c||c|}
+				\hline p & q & p \wedge q \\ 
+				\hline V & V & V \\ 
+				\hline V & F & F \\ 
+				\hline F & V & F \\ 
+				\hline F & F & F \\ 
+				\hline 
+				\end{array} 
+				$$
+				\item Los conectivos $\vee$ y $\wedge$ son asociativos, conmutativos y distribuyen uno con respecto a otro. 
+				\item Otras proposiciones conocidas son:
+				\begin{enumerate}
+					\item $(p \implies q ) \equiv (\overline{p} \vee q)$
+					\item $(p \iff q) \equiv [(p \implies q ) \wedge (q \implies p)]$
+					\item $(p \veebar q ) \equiv \overline{(p \iff q)}$
+				\end{enumerate}
+				\item Se dirá que una proposición es una tautología si su valor de verdad es siempre $V$, en cambio si es siempre $F$ diremos que es una contradicción.
+				\item Algunas tautologías útiles son:
+				\begin{enumerate}
+					\item $\overline{(p \vee q)} \iff (\overline{p} \wedge \overline{q})$
+					\item $\overline{(p \wedge q)} \iff (\overline{p} \vee \overline{q})$
+					\item $(p \implies q) \iff (\overline{q} \implies \overline{p})$
+					\item $[(p \implies q)\wedge(q \implies r)]\implies (p \implies r)$
+				\end{enumerate}
+				\item Una función proposicional es una expresión $p(x)$, tal que al reemplazar $x$ en la función esta se transforma en una proposición $p(x)$.
+			
+			\item Un cuantificador nos proporciona información sobre los objetos a evaluar en la función proposicional. Los clásicos cuantificadores son :
+			\begin{enumerate}
+				\item Cuantificador Universal $(\forall)$, se lee ``para todo''.
+				\item Cuantificador Existencial $(\exists)$, se lee ``existe''.
+				\item Cuantificador de Existencia y Unicidad $(\exists !)$, se lee ``existe un único''.
+			\end{enumerate}
+			\item Las negaciones clásicas con cuantificadores son:
+			\begin{enumerate}
+				\item $\overline{[\forall x , p (x)]} \iff [\exists x, \overline{p(x)}]$
+				\item $\overline{[\exists x, p(x)]}\iff [\forall x , \overline{p(x)}]$
+				\item $\overline{[\exists! x, p(x)]}\iff$ \\ $[\forall x , \overline{p(x)}] \lor [\exists x,y , p(x)\land p(y)\land x\neq y]$
+			\end{enumerate}
+			
+			\item La proposición $x \in A$ se lee $x$ pertenece al conjunto $A$.
+			\end{itemize}	
+		\end{multicols}
+\end{framed}
+
+\begin{enumerate}[\bf P1.]
+    \item \textbf{[Nuevo operador]}\\
+    Sean $p$ y $q$ proposiciones. Se define la proposición
+    $p *q$, por la siguiente
+    tabla de verdad:
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+                \hline $p$ & $q$ & $p  *q$\\
+                \hline V & V & F\\
+                \hline V & F & F\\
+                \hline F & V & F\\
+                \hline F & F & V\\
+                \hline
+            \end{tabular}
+        \end{center}
+        \begin{enumerate}
+            \item Probar que $\sim p \ \Leftrightarrow \ (p * p)$ y que $(p \lor q) \Leftrightarrow \ \sim(p * q)$.
+            \item Expresar las proposiciones $(p\Rightarrow q)$ y $(q \land p)$ usando sólo $*$ y $\sim$.
+        \end{enumerate}
+
+    %\item \textbf{[Descubriendo valores]}\\
+    %Determine los valores de verdad de las proposiciones $p, q, r, s$ y $t$, si se sabe que la proposición:
+     %   \begin{center}
+      %      $[~(p \ssi q) \land \overline{(r \Rightarrow s)}\land \overline{t}~] \Longrightarrow [s \lor (q \Rightarrow s)]$ es falsa
+       % \end{center}
+    \item \textbf{[Métodos de Demostración]} \\
+		Sean $p,q,r,s$ proposiciones lógicas.
+		\begin{enumerate}
+			\item Demuestre mediante el método algebraico o simbólico que:
+			\begin{enumerate}
+				\item $p \lor q \lor (\overline{p} \land \overline {q} )   $.
+				\item $(\overline{p} \land \overline{q}) \iff \overline{(p \lor (\overline{p}  \land q ))}$.
+				\item $[(p \implies \overline{q}) \land (r \implies q)] \implies (p \implies \overline{r})$.
+			\end{enumerate}
+			\item Demuestre mediante el método exploratorio que:
+			\begin{enumerate}
+				\item $
+				(p \implies r) \implies ((p\wedge q)\implies r)
+				$.
+				\item $[(\overline{p} \lor q) \lor (\overline{r} \land \overline{p})]\Longleftrightarrow (p\Rightarrow q)$
+			\end{enumerate}
+			\item Demuestre por contradicción:
+			\begin{enumerate}
+				\item $[(p \Rightarrow q) \land (\overline{s} \Rightarrow \overline{r})] \Longrightarrow [\overline{p} \lor \overline{r} \lor (q \land s)]$
+			\end{enumerate}
+		\end{enumerate}
+		
+    %\item Demuestre, sin usar tablas de verdad, que
+	%		$$[(p \lor q) \iff r] \implies [(q \implies r) \land (p \implies r)]$$
+	
+    \item \textbf{[Cuantificadores]} \\
+    Sea $A=\{1,\ 2,\ 3,\ 4,\ 5,\ 6  \}$. Escribir en símbolos matemáticos, escribir su negación y averiguar el valor de verdad de las siguientes proposiciones:
+        \begin{enumerate}
+            \item Hay un elemento en A que es mayor que los restantes.
+            \item Existe un único elemento en A  cuyo cuadrado es 4.
+            \item Para cada elemento en A existe otro en A que es menor o igual que él.
+            \item Existe un elemento cuyo cuadrado es igual a sí mismo.
+        \end{enumerate} 
+        
+    \item \textbf{[¿Todas las proposiciones?]} \\
+    Demuestre que $[\exists y] [p(y)\Rightarrow (\forall{x})p(x)]$, donde $p(\cdot)$ es una función proposicional.
+    
+    \item \textbf{[Si es que alcanzamos... Aplicación de Lógica]} \\Si los 123 residentes de un edificio tienen edades que suman 3813 años, entonces existen 100 de ellos cuyas edades suman al menos 3100 años.
+
+    %\item ¿Es $[(p\Rightarrow q) \Rightarrow q] \Rightarrow q$ una tautología?
+    %\item Se define recursivamente $\sigma_{k}$ como sigue: $\sigma_{0}=p\Rightarrow q$ y $\sigma_{k+1}=\sigma_{k}\Rightarrow q$. ¿Para que valores de $k$, $\sigma_{k}$ es verdadero?
+    
+    \item \textbf{[Para la casa]}
+        \begin{enumerate}
+            \item ¿Es $[(p\Rightarrow q) \Rightarrow q] \Rightarrow q$ una tautología?
+            \item Se define recursivamente $\sigma_{k}$ como sigue: $\sigma_{0}=p\Rightarrow q$ y $\sigma_{k+1}=\sigma_{k}\Rightarrow q$. ¿Para que valores de $k$, $\sigma_{k}$ es verdadero?
+        \end{enumerate}
+        
+\end{enumerate}
+
+
+\end{document}

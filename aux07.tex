@@ -1,0 +1,266 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[activeacute,spanish]{babel}
+\usepackage[left=1.7cm,top=1cm,right=1.7cm, bottom=0.9cm,letterpaper, includeheadfoot]{geometry}
+\usepackage{framed}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx,txfonts}
+\usepackage{lmodern,url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{epigraph}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\floatname{algorithm}{Algoritmo}
+
+\makeatletter
+
+
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} 
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\footnotesize\itshape\bfseries\rightmark}
+    \rhead{\footnotesize\itshape\bfseries\leftmark}
+    }
+
+\setlength{\parindent}{1cm}
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+% macros
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\U}{\mathcal U}
+\newcommand{\ssi}{\Longleftrightarrow} %si y solo si
+\newcommand{\To}{\Rightarrow}      %implica
+\newcommand{\tq}{\mid }            % tal que
+\newcommand{\exclusivo}{\veebar }  % o exclusivo
+\renewcommand{\vec}[2]{\left(\begin{array}{c}{#1}\\{#2}\end{array}\right)}
+\newcommand{\texii}[2]{\begin{minipage}{0.5\textwidth} #1 \end{minipage}  
+                     \begin{minipage}{0.5\textwidth} #2 \end{minipage}}
+
+%%%operadores matematicos
+\providecommand{\abs}[1]{\lvert#1 \rvert}
+\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+
+%Teoremas, Lemas, etc.
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\newtheorem{prob}{Problema Controlable}
+\newtheorem{nota}{Notaci\'on}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{defi}{Definición}[section]
+\setcounter{section}{1}
+%%%%%%% inicio documento %%%%%%%
+\begin{document}
+
+%============Encabezado estandar============
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Facultad de Ciencias Físicas y Matemáticas}}
+\fancyhead[R]{\textit{Universidad de Chile}}
+
+\begin{wrapfigure}{R}{0.2\textwidth} %this figure will be at the right
+    \vspace{-6mm}
+    \includegraphics[width=0.18\textwidth]{img/fcfm2.png}
+\end{wrapfigure}
+
+
+\noindent
+\textbf{MA1101-1 Introducción al Álgebra}\\
+\textbf{Profesor: }Leonardo Sánchez C.\\
+\textbf{Auxiliar: }Marcelo Navarro
+
+\begin{center}
+{\bf \Large Auxiliar 7: Relaciones}\\
+{03 de Mayo de 2018}
+\end{center}
+\begin{framed}
+		\begin{multicols}{2}
+		    \begin{itemize}  
+                    \item (En el curso) Diremos que $\mathcal{R}$ es una relación sobre $A$ si se cumple que $\mathcal{R} \subseteq A\times A$
+                    \item \textbf{Propiedades}. una relación $\mathcal{R}$ en $A$ es:
+                        \begin{enumerate}
+                            \item \textbf{refleja} si $\forall x \in A, x \mathcal{R} x$ 
+                            \item \textbf{simétrica} si $\forall x,y \in A, ~ x\mathcal{R}y \Rightarrow y\mathcal{R}x $
+                            \item \textbf{antisimétrica} si\\ $\forall x,y \in A,~ x\mathcal{R}y \land  y\mathcal{R}x \Rightarrow x=y$
+                            \item \textbf{transitiva} si $\forall x,y,z \in A,~ x\mathcal{R}y \land  y\mathcal{R}z \Rightarrow x\mathcal{R}z$
+                        \end{enumerate}
+                    \textbf{Obs}: una relación puede ser simétrica y antisimétrica a la vez, no son definiciones excluyentes.
+        
+                    \item $\mathcal{R}$ es de equivalencia si es refleja, simetrica y transitiva.
+
+                    \item $\mathcal{R}$ es de orden (o simplemente le llamamos orden) si es refleja, antisimetrica y transitiva.\\ 
+                    Se dice que $x$ e $y$ son comparables si se cumple que $x\mathcal{R}y \lor y\mathcal{R}x$.\\
+                    Se dice que $\mathcal{R}$ es orden total si $\forall x,y \in A$ , $x$ e $y$ son comparables.
+    
+                    \item Sea $a \in A$, definimos la clase de equivalencia de $a$ asociada a $\mathcal{R}$ como el conjunto 
+                        $$ [a]_{\mathcal{R}}= \{x \in A ~|~ a\mathcal{R}x\} \subseteq A $$
+                    \textbf{Obs}: si $b \in [a]_{\mathcal{R}}$ entonces $[a]_{\mathcal{R}}=[b]_{\mathcal{R}}$
+    
+                    \item Al conjunto de todas las clases de equivalencia de una relación de equivalencia $\mathcal{R}$ se le llama \textbf{conjunto cuociente}, y se denota $A/\mathcal{R}$ y es tal que:
+                    $$A/\mathcal{R}=\{[a]_{\mathcal{R}} ~|~ a \in A\}$$
+    
+                    \item Sea $\mathcal{R}$ una relación de equivalencia sobre $A$. Para todo $x,y \in A$ se tiene que:
+                    $$[x]_{\mathcal{R}} \subseteq [y]_{\mathcal{R}} \ssi [x]_{\mathcal{R}} \cap [y]_{\mathcal{R}} \neq \emptyset \ssi x\mathcal{R}y$$
+    
+                    \item $A/\mathcal{R}$ es una partición de $A$
+    
+                    \item $a \equiv_{n} b \ssi \exists q \in \Z, ~ a-b=qn$
+    
+                    \item $\equiv_{n}$ es una relación de equivalencia en $\Z$.\\
+                    El conjunto cuociente $\Z / \equiv_{n}$ lo escribiremos como $\Z_{n}$ y equivale a $$\Z_{n}=\{[a]_{n} ~|~ a \in \Z \}$$
+    
+                    \item Teorema: si $n \geq 1$, entonces $\Z_{n}$ tiene $n$ elementos, y son tal que:
+                    \begin{align*}
+                        \Z_{n} & = & \{[r]_{n} ~|~ 0 \leq r < n \} \\
+                        & = & \{[0]_{n},[1]_{n},[2]_{n}, \dots , [n-1]_{n} \}
+                    \end{align*}
+            \end{itemize}
+        \end{multicols}
+\end{framed}
+
+\begin{enumerate}[\bf P1.]
+    \item \textbf{[Pares e Impares]} Se define en $\N$ la relación $\mathcal{T}$ tal que: $ m\mathcal{T}n \ssi (m=n) \lor (2|n \land 2|m)$
+    
+    Demuestre que $\mathcal{T}$ es de equivalencia y encuentre $\N/\mathcal{T}$
+    
+    \item \textbf{[Módulo]} \\
+        Sea $\mathcal{R}$ la siguiente relación en $\Z^2$ definida por:
+        $$
+        (a,b) \mathcal{R} (c,d) \iff  a+b \equiv_2 c+3d
+        $$
+        \begin{enumerate}
+	        \item Demuestre que $\mathcal{R}$ es una relación de equivalencia.
+	        \item Demuestre que $[(0,0)]_\mathcal{R}\cup  [(1,0)]_\mathcal{R}=\Z^2$, pero que $[(0,0)]_\mathcal{R} \cap [(1,0)]_\mathcal{R}=\emptyset$.
+	        \item ¿Cuántos elementos tiene $\Z^2 /\mathcal{R}$?
+        \end{enumerate}
+    \item \textbf{[Resta en $\N$ y $\Z$]}
+        \begin{enumerate}
+            \item Se define en $\R$ la relacion $\Omega$ dada por: $x \Omega y \Leftrightarrow (y-x) \in \N$.\\ Demuestre que $\Omega$ es una relación de orden parcial.
+        
+            \item Considere ahora la relación $\Phi$ definida en $\R$ como: $x \Phi y \Leftrightarrow (y-x) \in \Z$.\\
+            Demuestre que $\Phi$ es de equivalencia y determine $[p]_{\Phi}$ con $p \in \Z$
+        \end{enumerate}
+        
+    \item\textbf{[Relaciones de proposiciones lógicas]} \\Sobre un conjunto de proposiciones lógicas $\mathcal{P}$, se define la relación $\mathcal{R}$ por: $p\mathcal{R}q \Leftrightarrow ((p\wedge q)\Leftrightarrow q).$\\ Además, para $p,q\in\mathcal{P}$ se dice que $p=q$ si y sólo si $p\Leftrightarrow q$.
+        \begin{enumerate}
+	        \item Demuestre que $\mathcal{R}$ es una relación de orden sobre $\mathcal{P}$.
+	        \item Pruebe que $\mathcal{R}$ es una relación de orden total.
+        \end{enumerate}
+    %\item Demuestre que cualquier relación de equivalencia $R$ sobre un conjunto $S$, particiona $S$ según sus clases de equivalencia.
+    
+    \item \textbf{[Aplicación de Relaciones: Teoria de la Computación]} \\    El objetivo de esta pregunta es ver una de las aplicaciones de las clases de equivalencia en el campo de la teoría de la computación, particularmente en autómatas finitos y maquinas de Turing.
+        
+        \begin{multicols}{2}
+        \begin{defi}[Símbolo]
+        Se define un símbolo como un carácter cualquiera. Por ejemplo: $a,1,\heart,etc$. 
+        \end{defi}
+        
+        \begin{defi}[String]
+            Se define un string o palabra como una secuencia de símbolos o bien, un símbolo. Por ejemplo: $a,b,hola,aabba,00010,101,\heart \heart 0a,etc$.
+            También se define el string vació '$\varepsilon$', como aquel string que simplemente no hace nada a dentro de una secuencia. Ejemplo: $'hola\varepsilon'='hola'$.
+        \end{defi}
+        
+        \begin{defi}[Concatenación]
+        Dados dos strings $'a'$ y $'b'$, se define la concatenación entre $'a'$ y $'b'$ como $'a\cdot b'$ o bien $'ab'$, donde simplemente se ha puesto al final de $'a'$, el string $'b'$. Por ejemplo: la concatenación entre $'hol'$ y $'a'$ es $'hola'$. 
+        \end{defi}
+        
+        \begin{defi}[Alfabeto] 
+        Se define un alfabeto como un conjunto de símbolos, lo denotaremos por $\Sigma$.
+        \end{defi}
+        
+        \begin{defi}
+        Se define $\Sigma^*$ como el conjunto de todas las palabras o strings que se pueda formar a partir de los símbolos en $\Sigma$.\\
+        Por ejemplo si $\Sigma=\{a,b\}$ entonces $\Sigma^*=\{\varepsilon, a,b,aa,bb,ab,ba,aaa,\dots, aababbabb,\dots \}$.\\
+        Este conjunto se define recursivamente por.
+            \begin{itemize}
+                \item $\varepsilon \in \Sigma^*$
+                \item $w \in \Sigma^*$ y $a \in \Sigma \Rightarrow wa\in \Sigma^*$
+            \end{itemize}
+        \end{defi}
+        
+        \begin{defi}[Lenguaje]
+            Definimos un Lenguaje $L$, como un subconjunto de $\Sigma^*$, es decir, $\emptyset \subseteq L \subseteq \Sigma^*$.
+        \end{defi}
+        \end{multicols}
+    Sea el alfabeto $\Sigma=\{0,1\}$ y sea $L\subseteq \Sigma^*$ un lenguaje cualquiera. se define la relación $\equiv_L$ sobre $\Sigma^*$ tal que
+        $$ x\equiv_Ly \iff [\forall z\in \Sigma^*, xz \in L \Leftrightarrow yz\in L]$$
+    
+    Es decir, en $\equiv_L$ viven todas las parejas de palabras que les falta lo mismo para vivir en $L$.
+    \begin{enumerate}
+        \item Demuestre que $\equiv_L$ es una relación de equivalencia.
+        \item Considere ahora $L=\{w \in \Sigma^* : w \text{ contiene } 001 \text{ como un substring } \}$. Calcule $\Sigma^*/\equiv_L$.
+        \item Dibuje una maquina de estados y transiciones que acepte al lenguaje $L$, donde una palabra $w$ se ira leyendo de izquierda a derecha, caracter por caracter, y dependiendo del caracter leido se escoge un estado siguiente de la maquina (esto lo definimos como una transición). La maquina termina de procesar cuando se termina el string, y se dice que la maquina acepta un string si la maquina termina en un estado de aceptación. 
+        Por ejemplo, la maquina para el lenguaje que contiene al menos un $a$ es:
+        
+        \begin{center}
+            \begin{tikzpicture}[scale=0.2]
+            \tikzstyle{every node}+=[inner sep=0pt]
+            \draw [black] (25.1,-25.9) circle (3);
+            \draw (25.1,-25.9) node {$q_0$};
+            \draw [black] (36.8,-25.9) circle (3);
+            \draw (36.8,-25.9) node {$q_1$};
+            \draw [black] (36.8,-25.9) circle (2.4);
+            \draw [black] (16.2,-25.9) -- (22.1,-25.9);
+            \draw (15.7,-25.9) node [left] {$w$};
+            \fill [black] (22.1,-25.9) -- (21.3,-25.4) -- (21.3,-26.4);
+            \draw [black] (28.1,-25.9) -- (33.8,-25.9);
+            \fill [black] (33.8,-25.9) -- (33,-25.4) -- (33,-26.4);
+            \draw (30.95,-26.4) node [below] {$a$};
+            \draw [black] (39.194,-24.112) arc (154.49148:-133.50852:2.25);
+            \draw (44.16,-24.4) node [right] {$a,b$};
+            \fill [black] (39.68,-26.71) -- (40.18,-27.51) -- (40.61,-26.61);
+            \draw [black] (23.319,-23.5) arc (244.30485:-43.69515:2.25);
+            \draw (23.4,-18.67) node [above] {$b$};
+            \fill [black] (25.92,-23.03) -- (26.72,-22.52) -- (25.82,-22.09);
+            \end{tikzpicture}
+        \end{center}
+        
+        Donde el estado de aceptación es $q_1$. Notar que cualquier palabra que contiene una $a$ se quedará por siempre en $q_1$ y una palabra que no contiene $a$ siempre se quedara en $q_0$ por lo que no será aceptada.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

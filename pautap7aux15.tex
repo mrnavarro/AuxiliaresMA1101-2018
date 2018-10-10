@@ -1,0 +1,130 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[activeacute,spanish]{babel}
+\usepackage[left=1.8cm,top=1cm,right=1.8cm, bottom=1cm,letterpaper, includeheadfoot]{geometry}
+\usepackage{framed}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx,txfonts}
+\usepackage{lmodern,url}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{epigraph}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\floatname{algorithm}{Algoritmo}
+
+\makeatletter
+
+
+
+
+% macros
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\U}{\mathcal U}
+\newcommand{\ssi}{\Longleftrightarrow} %si y solo si
+\newcommand{\To}{\Rightarrow}      %implica
+\newcommand{\tq}{\mid }            % tal que
+\newcommand{\exclusivo}{\veebar }  % o exclusivo
+\renewcommand{\vec}[2]{\left(\begin{array}{c}{#1}\\{#2}\end{array}\right)}
+\newcommand{\texii}[2]{\begin{minipage}{0.5\textwidth} #1 \end{minipage}  
+                     \begin{minipage}{0.5\textwidth} #2 \end{minipage}}
+
+%%%operadores matematicos
+\providecommand{\abs}[1]{\lvert#1 \rvert}
+\providecommand{\pin}[2]{\left< #1,#2 \right>} %producto interno
+\providecommand{\dpartial}[2]{\frac{\partial #1}{\partial #2}} %derivada parcial
+
+
+%Teoremas, Lemas, etc.
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\newtheorem{prob}{Problema Controlable}
+\newtheorem{nota}{Notaci\'on}
+\newtheorem{obs}{Observaci\'on}
+\newtheorem{defi}{Definición}[section]
+\setcounter{section}{1}
+%%%%%%% inicio documento %%%%%%%
+\begin{document}
+
+
+\begin{framed}
+\begin{enumerate}[\it a)]
+		\item Tomando modulo a la primera igualdad tenemos:
+\begin{eqnarray*}
+|z_1+z_2| & = & |-u| \\
+|z_1+z_2| & = & |u|	
+\end{eqnarray*}	
+Ocupando la desigualdad triangular tenemos:
+$$
+|u|=|z_1+z_2| \leq |z_1|+|z_2| = 2 
+$$
+Tomando modulo a la segunda igualdad tenemos:
+\begin{eqnarray*}
+	|z_1z_2| & = & |v| \\
+	|z_1||z_2|  & = & |v| \\
+	1 & = & |v|
+\end{eqnarray*}
+De donde concluimos.
+	\item Dividiendo las igualdades del enunciado (podemos pues $|z_1z_2| \neq 0 $ y por ende distinto de 0) tenemos:
+	\begin{eqnarray*}
+	 \frac{z_1+z_2}{z_1z_2} & = & -\frac{u}{v} \\
+  \frac{1}{z_1}+ \frac{1}{z_2} & = & -\frac{u}{v} \\ 
+  \frac{\overline{z_1}}{|z_1|^2} +   \frac{\overline{z_2}}{|z_2|^2}  & = & -\frac{u}{v} \\
+\overline{z_1}+\overline{z_2} & = &  -\frac{u}{v}\\
+	\end{eqnarray*}
+	
+		\item Conjugando la primera igualdad del enunciado obtenemos $\overline{z_1+z_2 }= \overline{-u}$, combinando esto con $b)$ obtenemos:
+		\begin{eqnarray*}
+		\underbrace{\overline{z_1+z_2 }}_{\overline{-u}}	& = & \underbrace{\overline{z_1}+ \overline{z_2}}_{b)} \\
+		-\overline{u }& = & -\frac{u}{v}  \\
+	 \overline{u}v	& = & u
+		\end{eqnarray*}
+		\item En forma polar tenemos que $u=|u|e^{i\varphi}$ y que $v=\underbrace{|v|}_{=1}e^{i \theta}= e^{i \theta} $. Ocupando $c)$:
+		\begin{eqnarray*}
+		\overline{u}v	& = & u \\
+		|u|e^{-i\varphi} e^{i \theta} & = & |u|e^{i\varphi} \\
+	e^{i(\theta - \varphi)}	& = &  e^{i\varphi}
+		\end{eqnarray*}
+		De donde concluimos que existe $k$ tal que:
+		$$
+		\theta - \varphi = \varphi + 2k\pi 
+		$$
+		Y por tanto:
+		$$
+		\theta = 2\varphi + 2k \pi
+		$$
+		Que era lo buscado.
+	\end{enumerate}
+	\end{framed}
+	\end{document}

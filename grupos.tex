@@ -1,0 +1,572 @@
+\documentclass[11pt]{article}
+\usepackage[activeacute,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,top=1.5cm,right=2cm, bottom=1.5cm,letterpaper, includeheadfoot]{geometry}
+
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{lmodern,url}
+\usepackage{dsfont}
+\usepackage{fancybox}
+\usepackage{marginnote}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+\fancyhf{}
+\lhead{\footnotesize\itshape\bfseries\rightmark}
+\rhead{\footnotesize\itshape\bfseries\leftmark}
+}
+
+%Para poner las letras cursivas, en modo matemático
+\newcommand{\cur}[1]{\mathcal{#1}}
+
+%Conjunto de las partes, 2 parámetros
+\newcommand{\pr}[1]{\cur{P}(#1)}
+
+%Para poner displaystyle
+\newcommand{\ds}{\displaystyle}
+
+%Para hacer funciones
+\newcommand{\function}[5]{  \begin{array}{rl}
+                                #1: #2 &\longrightarrow #3 \\
+                                #4 & \longmapsto #1\left(#4\right)= #5
+                            \end{array} }
+                            
+% macros
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\NN}{\N\setminus\{0\}}
+\newcommand{\K}{\mathbb K}
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+% fin macros
+
+%%%%% Nombre Auxiliares y fecha
+\newcommand{\dos}{Camilo G\'omez}
+\newcommand{\uno}{Selim Cornet}
+\newcommand{\auxnum}{10}
+\newcommand{\fecha}{12 de Marzo}
+
+%%%%%%%%%%%%%%%%%%
+
+%Macros para este documento
+\newcommand{\cin}{\operatorname{cint}}
+\newcommand{\id}{\operatorname{Id}} %función identidad
+
+
+\begin{document}
+%Encabezado
+\fancyhead[L]{Facultad de Ciencias F\'isicas y Matem\'aticas}
+\fancyhead[R]{Universidad de Chile}
+\vspace*{-1.2 cm}
+\begin{minipage}{0.6\textwidth}
+\begin{flushleft}
+\hspace*{-0.5cm}\textbf{MA1101-5: Introducci\'on al \'Algebra. Otoño-2014}\\
+\hspace*{-0.5cm}\textbf{Profesor:} Jos\'e Soto\\
+\hspace*{-0.5cm}\textbf{Auxiliares:} \uno,~\dos.\\
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.36\textwidth}
+\begin{flushright}
+\includegraphics[scale=0.15]{img/fcfm2.png}
+\end{flushright}
+\end{minipage}
+\bigskip
+%Fin encabezado
+
+\begin{center}
+\LARGE\textbf{Banco Problemas Grupos}\\
+\textbf{ \fecha.}
+\end{center}
+
+\begin{enumerate}
+\item \textbf{(P3 Control 3, Año 1997)}\\
+Sea $(G,*)$ un grupo con neutro $e\in G$ y 
+$$A=\{F:G\longrightarrow G\;|\;F\mbox{ es un isomorfismo de $(G,*)$ en $(G,*)$}\}.$$
+\begin{enumerate}
+\item Probar que $(A,\circ)$ es un grupo ($\circ$ es la composición de funciones).
+\item Para cada $g\in G$ se define la función $F_g:G\longrightarrow G$ tal que $F_g(x)=g*x*g^{-1}$ en cada $x\in G$. Pruebe que:
+\begin{enumerate}
+\item[(i)] $F_g$ es un homomorfismo de $(G,*)$ en $(G,*)$.
+\item[(ii)] $F_{g*h}=F_g \circ F_h,\;\, \forall\;g,\,h\in G$.
+\item[(iii)] $F_e=\id_{G}$.\\
+Concluya que $F_g$ es un isomorfismo y que $(F_g)^{-1}=F_{g^{-1}}$ para todo $g\in G$.
+\end{enumerate}
+\item Pruebe que $B=\{F_g\;|\;g\in G\}$ es un subgrupo de $(A,\circ)$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 3, Año 1998)}
+\begin{enumerate}
+\item Sea $(G,*)$ un grupo Abeliano y $H,K\subseteq G$ subgrupos de $G$. Se define el conjunto
+$$H*K=\{h*k\;|\;h\in H,\,k\in K\}$$
+Probar que $H*K$ es un subgrupo de $G$.
+\item Sea $(G,*)$ un grupo tal que $(\forall\; g\in G) \,(\exists\;n\geq 1)\;\, g^{n}=\overbrace{g*\ldots*g}^{\mbox{$n$ veces }}=e$ (el neutro de $G$).\\ 
+Probar que el único homomorfismo $F: (G,*)\longrightarrow (\Z,+)$ es la función $F(g)=0$ en cada $g\in G$.
+\item Sea $(G,*)$ un grupo que satisface la propiedad $a*a=e$ (el neutro del grupo) en cada $a\in G$, es decir, el inverso de cada elemento del grupo es el mismo elemento. Pruebe que $G$ es un grupo Abeliano.\\
+\textbf{Indicación:} Calcule $(a*b)*(b*a)$.
+\end{enumerate}
+
+\item \textbf{(P3 Control 3, Año 1998)}\\
+Considere en $\R^2$ las siguientes operaciones $(a,b)\oplus (c,d)=(a+c,\,b+d)$ y $(a,b)\odot (c,d)=(a\cdot c,\, b\cdot d)$.
+\begin{enumerate}
+\item Pruebe que $(\R^2, \oplus, \odot)$ es un anillo conmutativo con unidad.
+\item Pruebe que $(\R^2, \oplus, \odot)$ posee divisores del cero.
+\item (pendiente)
+\end{enumerate}
+
+\item \textbf{(P1 Control 3, Año 2000)}\\
+Sean $f,\,g:\R^2\longrightarrow\R^2$ tales que $\forall\;x,y\in\R$, 
+$$f(x,y)=(-x,y) \qquad \mbox{y} \qquad g(x,y)=(-y,x).$$
+Sea $\id$ la función identidad en $\R^2$. Para $h: \R^2\longrightarrow\R^2$ se define $h^0=\id$ y $h^n=\overbrace{h\circ \ldots\circ h}^{n}$ si $n=1,2,\ldots$ Si además $h$ es biyectiva, se define $h^{n}=(h^{-1})^{|n|}$ si $n=-1,-2,\ldots,$ y se tiene (no lo pruebe) que $h^n\circ h^m=h^{n+m}$  para todo $n,\,m\in\Z$ y que $(\{h^{p}: \R^2\longrightarrow \R^2\;|\; p\in\Z\},\circ)$ es grupo.
+\begin{enumerate}
+\item[(i)] Verificar que $f^2=\id$, $g^4=\id$, $f$ y $g$ son biyectivas, y que $g\circ f=f\circ g^{-1}$.
+\item[(ii)] Probar que $f^p=\left\{ \begin{array}{ll}
+\id, & \mbox{ si $p\in\Z$ es par,}\\
+f, & \mbox{ si $p\in\Z$ es impar.}
+\end{array}\right.$\\
+Demuestre además, que $(\{f^p: \R^2\longrightarrow \R^2\;|\; p\in\Z\},\circ)$ es isomorfo a $(\{-1,+1\},\,\cdot)$ donde $\cdot$ es la multiplicación usual en $\R$.
+\item[(iii)] Probar que $\forall\;n\in\N, \, g^n\circ f=f\circ g^{-n}$ y deduzca que $\forall\;n\in\Z,\,g^n\circ f=f\circ g^{-n}.$ Concluya que
+$$\forall\;n,\,m,\,p,\,q\in\Z,\,\exists\;s,\,t\in\Z,\;\mbox{ tales que }\; (f^{m}\circ g^{n})\circ (f^{p}\circ g^{q})=f^s\circ g^t,$$
+\item[(iv)] Sea $\cur{G}=\{f^m\circ g^n: \R^2\longrightarrow\R^2\;|\;m,\,n\in\Z\}$. Probar que $(\cur{G},\circ)$ es subgrupo no-abeliano del grupo $(\cur{H},\circ)$ donde $\cur{H}=\{h: \R^2\longrightarrow\R^2\;|\; h \mbox{ es biyectiva}\}$.
+\end{enumerate}
+
+\item \textbf{(P3 Control 3 (Sec 04,06), Año 2000)}
+\begin{enumerate}
+\item[(i)] Sea $(A,+,\cdot)$ un anillo finito (es decir, $|A|<+\infty$) sin divisores del cero.
+\begin{enumerate}
+\item[(i.1)] Pruebe que $\exists\;p\in\NN$, tal que $\underbrace{1+1+\ldots+1}_{\mbox{$p$ veces}}=0$.
+\item[(i.2)] Pruebe que si $a,\,b\in\NN$, entonces
+$$\underbrace{1+1+\ldots+1}_{\mbox{$a\cdot b$ veces}}=0 \; \Longrightarrow \; \underbrace{1+1+\ldots+1}_{\mbox{$a$ veces}}=0 \; \vee \; \underbrace{1+1+\ldots+1}_{\mbox{$b$ veces}}=0.$$
+\end{enumerate}
+\item[(ii)] Sea $n\in\N$. Se dice que $\chi: \Z_m\longrightarrow \C$ es un caracter de $(\Z_n,+)$ si
+\begin{itemize}
+\item $|\chi(k)|=1$, para todo $k\in\Z_n$, y 
+\item $\chi$ es un homomorfismo de $(\Z_n,+)$ en $(\C\setminus\{0\},\cdot)$, es decir, $\chi(k+k^{\prime})=\chi(k)\cdot\chi(k^{\prime})$ para todo $k,k^{\prime}\in\Z_n$.
+\end{itemize}
+Para $l\in\{0,\ldots,n-1\}$, se define $\phi_l: \Z_n\longrightarrow \C$ por $\phi_l(k)=e^{i\frac{2\pi l k}{n}}$.
+\begin{enumerate}
+\item[(ii.1)] Pruebe que $\phi_l$ es un caracter de $(\Z_n,+)$.
+\item[(ii.2)] Use que en $\Z_n$ se tiene que $\underbrace{1+1+\ldots+1}_{\mbox{$n$ veces}}=0$ para probar que si $\chi$ es un caracter de $(Z_n,+)$, entonces $\chi\in\{\phi_0,\ldots,\phi_n\}$.
+\end{enumerate}
+\textbf{Indicación:} Recuerde que todo homomorfismo envía neutro en neutro.
+\end{enumerate}
+
+\item \textbf{(P3 Control Recuperativo, Año 2000)}\\
+Sea $(G,*)$ grupo no necesariamente abeliano con neutro $e$.\\
+Para $a\in G$, se define la función $f_a: G\longrightarrow G$ tal que $f_a(x)=a*x*a^{-1}$.
+\begin{enumerate}
+\item[(i)] Pruebe que $f_e=\id_G$ y que para todo $a,\,b \in G,\; f_{a*b}=f_a\circ f_b$.
+\item[(ii)] Pruebe que $\forall\; g\in G$, $f_a$ es un isomorfismo de $(G,*)$ en $(G,*)$ cuyo inverso es $f_{a^{-1}}$.
+\item[(iii)] Pruebe que si $Z(G)=\{a\in G\;|\;f_a=\id_G\}$, entonces $(Z(G),*)$ es subgrupo de $(G,*)$ y que
+$$a\in Z(G) \; \Longleftrightarrow \; \forall\;x\in G,\; a*x=x*a.$$
+\end{enumerate}
+
+\item \textbf{(P1 Control 3, Año 2002)}\\
+Sea $(G,\ast)$ un grupo con neutro $e\in G$. Sea $\preceq$ una relación de orden sobre $G$ tal que:
+$$\forall\;x,\,y,\,z\in G: (x\preceq y) \Longrightarrow (x*z\preceq y*z)$$
+Sean $G_+=\{x\in G\;|\;e\preceq x\}$ y $G_-=\{x\in G\;|\;x\preceq e\}$. Demuestre que:
+\begin{enumerate}
+\item $G_+\cap G_-=\{e\}$.
+\item $(\forall\;x\in G)\;(x\in G_+ \Longrightarrow x^{-1}\in G_-).$
+\item $(G_+,*)$ es una estructura algebraica.
+\item Si la relación de orden $\preceq$ es total, entonces $G_+\cup G_-=G$.\\
+\textbf{Observación:} Una relación de orden $\cur{R}$ en un conjunto $A$ se dice total cuando \\$(\forall\;x,\,y\in A)\; x\,\cur{R}\,y \; \vee \;y\,\cur{R}\,x$.
+\item Si $G_+\cup G_-=G$, entonces la relación de orden $\preceq$ es total.
+\end{enumerate}
+
+\item \textbf{(P2 (a) Control 3, Año 2002)}\\
+En $\Z_3\times\Z$ se define la ley de composición interna $\oplus$ como sigue:
+$$([n],m)\oplus([n^{\prime}],m^{\prime})=([n+n^{\prime}],m+m^{\prime})$$
+Sea $\varphi: \Z_3\times \Z \longrightarrow \Z$ un homomorfismo de $(\Z_3\times \Z,\oplus)$ en $(\Z,+)$.
+\begin{enumerate}
+\item[(i)] Demuestre que $\varphi(([1],0))=0$.\\
+\textbf{Indicación:} Calcule $\varphi(([1],0)\oplus([1],0)\oplus ([1],0)).$
+\item[(ii)] Concluya que $(\Z_3\times\Z,\oplus)$ no es isomorfo con $(\Z,+)$.
+\end{enumerate}
+
+\item \textbf{(P3 Control 3, Año 2002)}\\
+Sea $(H,+)$ subgrupo de $(\Z,+)$ con $H\neq \{0\}$.
+\begin{enumerate}
+\item Pruebe que $\{h\in H\;|\;h>0\}\neq \phi$. 
+\item Considere $d=\min\{h\in H\;|\;h>0\}$.  Se define el conjunto
+$$d\Z=\{x\in \Z\;|\; (\exists\;k\in\Z)\;x=dk\}.$$
+Demuestre que $d\Z\subseteq H.$
+\item Sea $h\in H$ con $h>0$. Demuestre que $h=dq$ para algún $q>0$.\\
+\textbf{Indicación:} Puede usar el Teorema de la División:\\
+$(\forall\;a,\,b\in\N,b\neq 0)\;\,(\exists !\;q,\,r\in\N)\,\;0\leq r< b \; \wedge \; a=qb+r.$
+\item Concluya que $H=d\Z$.
+\end{enumerate}
+
+\item \textbf{(P2 Control 3, Año 2003)}\\
+Considere el conjunto $\Z_2\times\Z_2$ con las operaciones
+\begin{align*}
+(a,b)+(c,d)&=(a+c,b+d)\\
+(a,b)\cdot(c,d)&=(a\cdot c,b\cdot d),
+\end{align*}
+donde $+$ y $\cdot$ son la suma y la multiplicación usual en $\Z_2$.\\
+Definamos también la operación
+$$(a,b)*(c,d)=(a\cdot c+b\cdot d, a\cdot d+b\cdot c+b\cdot d).$$
+Usando el hecho de que $(\Z_2,+,\cdot)$ es un cuerpo pruebe que:
+\begin{enumerate}
+\item $(\Z_2\times\Z_2, +,\cdot)$ es un anillo conmutativo y con unidad ¿Es un cuerpo? Justifique su respuesta.
+\item $(\Z_2\times \Z_2, +,*)$ es un cuerpo.
+\item Pruebe que $(\Z_2\times\Z_2,+,*)$ no es isomorfo a $(\Z_4,+,\cdot)$, es decir, no existe ningún morfismo biyectivo entre $(\Z_2\times\Z_2,+,*)$ y $(\Z_4,+,\cdot)$.
+\end{enumerate}
+
+\item \textbf{(P3 Control 3, Año 2003)}
+\begin{enumerate}
+\item[(1)] Sea $(G,\cdot)$ un grupo Abeliano de cardinalidad $|G|=15$. Definamos los conjuntos:
+$$F=\{g\in G\;|\;g^5=1\}\quad\mbox{y}\quad H=\{g\in G\;|\;g^3=1\}$$
+donde $1$ es el neutro del grupo $G$ y $g^n=\underbrace{g\cdot g\cdot \ldots \cdot g}_{\mbox{$n$ veces}}$
+\begin{enumerate}
+\item[(a)] Pruebe que $F$ y $H$ son subgrupos de $G$.
+\item[(b)] Pruebe que $F\cap H=\{1\}$.
+\item[(c)] Pruebe que si $F$ y $H$ no son los subgrupos triviales (es decir, $F,\,H\neq \{1\}$ y $G$), entonces $|F|=5$ y $|H|=3$. Pruebe además que $G=\{\,f\cdot h\;|\;f\in F,\ h\in H\}.$\\
+\end{enumerate} 
+
+\item[(2)] Sea $(G,*)$ un grupo y sea $S\subseteq G$, un conjunto no vacío. Para cada $g\in G$ se definen los conjuntos
+$$g*S=\{g*s\;|\;\forall\;s\in S\} \quad \mbox{ y } \quad S*g=\{s*g\;|\;\forall\; s\in S\}.$$
+Se definen los conjuntos:
+$$C(S)=\{g\in G\;|\;g^{-1}*s*g=e,\; \forall\;s\in S\} \quad \mbox{ y } \quad N(S)=\{g\in G\;|\;g^{-1}*S*g=S\}.$$
+Pruebe que:
+\begin{enumerate}
+\item[(a)] $N(S)$ es un subgrupo de $G$.
+\item[(b)] $C(S)$ es un subgrupo de $N(S)$.
+\end{enumerate}
+\end{enumerate}
+
+\item \textbf{(P1 (iii) Control 3, Año 2004)}\\
+Encuentre todos los morfismos de $(\Z_3,+_3)$ en $(\C\setminus\{0\},\,\cdot\,)$
+
+\item \textbf{(P2 Control 3, Año 2004)}
+\begin{enumerate}
+\item Sea $(G,*)$ un grupo Abeliano y $H=\{h:G\longrightarrow G\;|\; h \mbox{ es homomorfismo}\}$, es decir, $H$ es el conjunto de las funciones que son homomorfismos de $(G,*)$ en $(G,*)$. \\ Se define en $H$ la ley $\Delta$ por $$(h_1\,\Delta\, h_2)(x)=h_1(x)\,\Delta\, h_2(x),\quad (\forall\; h_1,\,h_2\in H)\;(\forall\;x\in G).$$ 
+Verifique que $\Delta$ es l.c.i. en $H$ y demuestre que $(H,\Delta)$ es grupo Abeliano.
+\item Sea $(G,*)$ un grupo tal que $|G|=3$ y $G=\{e,a,b\}$ con $e$ neutro en $G$. Pruebe que $a^{-1}=b$.
+\end{enumerate}
+
+\item \textbf{(P3 Control 3, Año 2004)}
+\begin{enumerate}
+\item Considere el grupo Abeliano $(G,\odot)$.\\
+Para $k\in\N,\ k\geq 2$ se define $G^{k}=\{a^k\;|\;a\in G\}$ en que $a^k=\overbrace{a\odot a \odot \ldots \odot a}^{\mbox{$k$ veces}}$.
+\begin{enumerate}
+\item[(i)] Demuestre que $(G^k,\odot)$ es subgrupo de $(G,\odot)$.
+\item[(ii)] En $((\Z_{53}^{*},\odot_{53})$ determine el inverso de $[9]^{2}$,\\ en que $\Z_{53}^{*}=\Z_{53}-\{[0]\}$ y $\odot_{53}$ es el producto en $\Z_{53}$.
+\end{enumerate}
+\item Sea $(K,+_{K},\odot_{K})$ un cuerpo y $(A,+_{A},\odot_{A})$ un anillo con unidad y $f: K\longrightarrow A$ un homomorfismo, es decir, $f:(K,+_{K})\longrightarrow (A,+_{A})$, \ $f:(K\setminus\{0\},\odot_{K})\longrightarrow (A\setminus\{0\},\odot_{A})$ \ y \ $f(1_{K})=1_A$.\\
+Pruebe que
+\begin{enumerate}
+\item[(i)] $f(x)\neq 0 \; \Longleftrightarrow \; x\neq 0_{K}$.
+\item[(ii)] $f$ es inyectiva.
+\end{enumerate}
+\end{enumerate}
+
+\item \textbf{(P2 Control 3, Año 2005)}
+\begin{enumerate}
+\item Se define $S\subseteq \C$ por $S=\{z\in\C\;:\;|z|=1\}$.\\
+Demuestre que $(S,\,\cdot\,)$ es grupo Abeliano.
+\item 
+\begin{enumerate}
+\item[(i)] Demuestre que si $z$ es raíz $n$-ésima de la unidad $(n\geq 2)$ y $n$ es divisor de $m$, entonces $z$ es raíz $m$-ésima de la unidad.\\
+(\textbf{Indicación:} $n\in\N$ es divisor de $m\in\N \; \Longleftrightarrow \; (\exists\;k\in\N)\;m=k\cdot n$)
+\item[(ii)] Sea $U=\{z\in\C\;|\;\mbox{ para algún $n\in\N,\;n\geq 2,\;z$ es raíz $n$-ésima de la unidad}\}.$\\
+Mostrar que $(U,\,\cdot\,)$ es subgrupo del grupo $(S,\,\cdot\,)$ del punto $(a)$.
+\end{enumerate}
+\end{enumerate}
+
+\item \textbf{(P3 Control 3, Año 2005)}\\
+Sea $(G,*)$ un grupo no necesariamente abeliano con neutro $e$.
+\begin{enumerate}
+\item[(i)] Para $a\in G$, se define la función $h_a: G\longrightarrow G$ tal que $h_a(x)=a*x*a^{-1}$\\
+($a^{-1}$  es el inverso de $a$ en $G$).\\
+Pruebe que $\forall\;a\in G,\; h_a$ es un homomorfismo de $(G,*)$ en $(G,*)$.
+\item[(ii)] Se definen los conjuntos $A=\{f:G\longrightarrow G \;|\; f \mbox{ es un isomorfismo de $(G,*)$ en $(G,*)$}\}\;$ y $\;B=\{g:G\longrightarrow G\; |\; g \mbox{ es biyectiva}\}$.\\
+Demuestre que $(A,\circ)$ es subgrupo de $(B,\circ)$ ($\circ$ es la composición de funciones).
+\item[(iii)] Pruebe que la función $\function{\varphi}{(G,*)}{(A,\circ)}{a}{h_a}$ \\ es un homomorfismo, en donde $A$ es el conjunto de los isomorfismos definido en (ii) y $h_a$ es el isomorfismo del punto (i).
+\item[(iv)]  De un ejemplo de grupo $(G,*)$, o condición que deba cumplir el grupo $(G,*)$, para que la función $\varphi$ sea constante.
+\end{enumerate}
+
+
+
+\item \textbf{(P2 Control 3, Año 2006)}\\
+Sean $(G,*)$ y $(H,\circ)$ grupos con neutros $e_{G}$ y $e_{H}$ respectivamente. Se define en $G\times H$ la ley de composición interna $\Delta$ por:
+$$(a,b)\,\Delta \,(c,d)=(a*c,\, b\circ d) \quad \forall\;(a,b),\,(c,d)\in G\times H$$
+\begin{enumerate}
+\item[(i)] Demuestre que $(G \times H, \Delta)$ es grupo.
+\item[(ii)] Demuestre que las funciones $\varphi$ y $\psi$ definidas por:
+$$\function{\varphi}{G\times H}{G}{(g,h)}{g} \quad \mbox{ y } \quad \function{\psi}{G\times H}{H}{(g,h)}{h}$$
+son homomorfismos sobreyectivos.
+\item[(iii)] Considere $G=H$ y $*=\circ$ y la función $f: G\times G \longrightarrow G$ definida por: $$f((a,b))=(a * b)^{-1} \quad \forall \; (a,b)\in G\times G.$$ Pruebe que
+$$f \mbox{ es un homomorfismo de } (G\times G, \Delta) \mbox{ en } (G,*) \Longleftrightarrow \mbox{ El grupo $(G,*)$ es Abeliano.}$$
+\end{enumerate}
+
+\item \textbf{(P3 Control 3, Año 2006)}\\
+Sea $(A,+,\,\cdot\,)$ un anillo (no necesariamente con unidad). Para $n\in\Z$ y $a\in A$ se define:
+$$na=\underbrace{a+a+\ldots+a}_{\mbox{ $n$ veces}} \mbox{ si } n>0;\quad  0a=0_A\in A \mbox{ si } n=0$$
+$$\mbox{ y}\quad  na=\underbrace{(-a)+(-a)+\ldots+(-a)}_{\mbox{$-n$ veces}} \mbox{ si } n<0$$
+Además, puede usar, sin demostrar que, $$(\forall\;m,\,n\in \Z)\;(\forall\;a,\,b\in A)\; (n+m)a=na+ma;\; n(ma)=nma;\; a(nb)=nab.$$
+Considere en $\Z\times A$ las leyes suma y producto definidas por:\\
+Suma: $\quad (n,a)\oplus (m,b)=(n+m,\,a+b)$\\
+Producto: $\; (n,a)\odot (m,b)=(nm,\,nb+ma+ab)$
+\begin{enumerate}
+\item[(i)] Demuestre que $(\Z\times A,\oplus, \odot)$ es un anillo con unidad.
+\item[(ii)] Demuestre que las funciones
+$$\function{f}{A}{\Z\times A}{a}{(0,a)} \qquad \mbox{y} \qquad \function{g}{\Z}{\Z\times A}{n}{(n,0_{A})}$$
+son homomorfismos inyectivos de los anillos $(A,+,\,\odot\,)$ y $(\Z,+,\,\odot\,)$ en el anillo $(\Z\times A,\oplus, \odot)$ respectivamente.
+\item[(iii)] Considere en lugar de $(A,+,\,\cdot\,)$ el cuerpo $(\Z_{5},+,\,\cdot\,)$. Muestre que el anillo $(\Z\times \Z_5, \oplus, \odot)$ tiene divisores del cero.\\
+¿Es $(\Z\times \Z_5, \oplus, \odot)$ un cuerpo?
+\end{enumerate} 
+
+\item \textbf{(P2 Control 5, Año 2007)}\\
+Se define en $\R^2$ la ley de composición interna $*$ por:
+$$(\forall\;(a,b),\,(c,d)\in\R^2)\quad (a,b)*(c,d)=(ac,bc+d).$$
+Se pide:
+\begin{enumerate}
+\item Estudiar la conmutatividad de $*$ en $\R^2$.
+\item Estudiar la asociatividad de $*$ en $\R^2$.
+\item Determine el neutro en $\R^2$ para $*$.
+\item Determine qué elementos son invertibles para $*$ y calcule sus inversos.
+\item Determine los elementos idempotentes para $*$ en $\R^2$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 6, Año 2007)}\\
+Considere las estructuras algebraicas $(\Z,+,\,\cdot\,)$, con la suma y producto usuales, y $(\Z,\oplus, \odot)$, en que $\oplus$ y $\odot$ se definen por
+\begin{align*}
+\forall\;a,\,b\in \Z,\quad a\oplus b&=a+b+1\\
+a\odot b&=a+b+ab
+\end{align*}
+\begin{enumerate}
+\item[(i)] Encuentre el neutro para $\oplus$.
+\item[(ii)] Demuestre que existe $f$ tal que
+\begin{align*}
+f&: (\Z,+)\longrightarrow (\Z,\oplus) \; \mbox{ es isomorfismo}\\
+\mbox{ y } \; f&: (\Z,\,\cdot\,) \longrightarrow (\Z,\odot)\; \mbox{ es isomorfismo,}
+\end{align*}
+mostrando explícitamente $f$ y verificando que cumple lo pedido.\\
+\textbf{Indicación:} Si $n\in\Z,\; n>0,$ escríbalo como $n=\underbrace{1+1+\ldots+1}_{\mbox{$n$ veces}}$.
+
+\item[(iii)] Demuestre que $(\Z,\oplus, \odot)$ es anillo conmutativo con unidad.
+\item[(iv)] Encuentre $b\in\Z$, distinto del neutro para $\odot$ (encontrado en (i)) que sea invetible con respecto a $\odot$.
+
+
+\end{enumerate}
+
+
+\item \textbf{(P1 Control 5, Año 2008)}\\
+Sea $(S,*)$ una estructura algebraica con neutro $e$ y $*$ una operación asociativa. Para $a\in S$ fijo, invertible para $*$ y con inverso $a^{-1}\in S$ se define la operación $\Delta$ en $S$ por:
+$$\forall\;x,\,y\in S\quad x\,\Delta\,y=x*a*y.$$
+\begin{enumerate}
+\item[(i)] Demuestre que la ley $\Delta$ es asociativa, tiene neutro y calcúlelo.
+\item[(ii)] Caracterice los elementos invertibles para $\Delta$ y calcule el inverso de $a$ con respecto a $\Delta$. Justifique sus respuestas.
+\item[(iii)] Si $(S,*)$ es grupo, decida si $(S,\Delta)$ también lo es. Justifique.
+\end{enumerate}
+
+\item \textbf{(P2 Control 5, Año 2008)}\\
+Sea $A=(\R\setminus\{0\})\times (\R\setminus\{0\})$. Se define sobre $A$ la operación $\circ$ por
+$$(x,y)\circ (u,v)=(xu,yv).$$
+\begin{enumerate}
+\item[(i)] Demuestre que $(A,\circ)$ es un grupo Abeliano.
+\item[(ii)] Considere $a\in\R,\; a\neq 0$ fijo. Se define $H\subseteq A$ por
+$$H=\{(x,y)\in A\;|\;y=x^{a}\}.$$
+Demuestre que $(H,\circ)$ es subgrupo de $(A,\circ)$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 6, Año 2008)}\\
+Se define en $\R$ la l.c.i. $*$ por $x*y=\sqrt[3]{x^3+y^3}$. Se pide:
+\begin{enumerate}
+\item Probar que $(\R,*,\,\cdot\,)$ es un cuerpo.\\
+\textbf{Ind.:} $\,\cdot\,$ es el producto habitual en $\R$ y puede usar todas las propiedades conocidas para $\,\cdot\,$.
+\item Demuestre que $f:\R\longrightarrow \R$ definida por $f(x)=x^3$ es un isomorfismo de $(\R,*,\,\cdot\,)$ en $(\R,+,\,\cdot\,)$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 5, Año 2009)}\\
+Sea $(G,*)$ un grupo con elemento neutro $e$. Se define en $G\times G$ la ley de composición interna $\Delta$ como:
+$$(a,b)\,\Delta\,(c,d)=(a*c,\,b*d), \quad \forall\;(a,b),\,(c,d)\in G\times G.$$
+\begin{enumerate}
+\item[(i)] Pruebe que $(G\times G, \Delta)$ es grupo.
+\item[(ii)] Suponga ahora que $(G,*)$ es grupo abeliano y considere la función $\varphi:G\times G \longrightarrow G$ definida por $\varphi((a,b))=(a*b)^{-1},\; \forall\;(a,b)\in G\times G$. \\
+Demuestre que $\varphi$ es un homomorfismo de $(G\times G, \Delta)$ en $(G,*)$.
+\item[(iii)] ¿Es $\varphi$ un isomorfismo? Justifique.
+\end{enumerate}
+
+\item \textbf{(P2 Control 5, Año 2009)}
+\begin{enumerate}
+\item Sea $(G,*)$ un grupo Abeliano y $H,K\subseteq G$ dos subgrupos de $G$. Probar que el conjunto
+$$H*K=\{h*k\;|\;h\in H,\,k\in K\}$$
+es subgrupo de $(G,*)$.
+\item Sea $(G,*)$ un grupo finito de orden 4, es decir, $|G|=4$, con neutro $e\in G$.\\ 
+Pruebe que $\forall\;a\in G\setminus\{e\},\; a^{3}\neq e\; (a^{3}=a*a*a)$.\\
+\textbf{Indicación:} Argumente por contradicción y use el Teorema de Lagrange.
+\end{enumerate}
+
+\item \textbf{(P1 Control 6, Año 2009)}
+\begin{enumerate}
+\item En $\Z^2$ se definen las siguientes leyes de composición interna: %\forall\;(a,b),\,(c,d)\in\Z^2$
+\begin{align*}
+(a,b)\oplus (c,d)&=(a+c,b+d)\\
+(a,b)\odot (c,d)&=(ac,0)
+\end{align*}
+Sabiendo que $(\Z^2,\oplus)$ es grupo Abeliano (no lo demuestre).
+\begin{enumerate}
+\item[(i)] Verifique que $(\Z^2,\oplus,\odot)$ es un anillo conmutativo.
+\item[(ii)] Averigüe si $(\Z^2,\oplus,\odot)$ tiene unidad y/o divisores de cero. ¿Es $(\Z^2,\oplus,\odot)$ cuerpo? Justifique.
+\end{enumerate}
+\item Sea $(\K,+,\,\cdot\,)$ un cuerpo de orden 3 $(|\K|=3)$.
+\begin{enumerate}
+\item[(i)] Construya las tablas para las operaciones $+$ y $\,\cdot\,$, justificando su respuesta.
+\item[(ii)] Encuentre un isomorfismo $f$ entre $(\K,+,\,\cdot\,)$ y $(\Z_3,+_3,\,\cdot_3\,)$, explicitando las asignaciones de $f$.
+\end{enumerate}
+\end{enumerate}
+
+\item \textbf{(P3 Control 2, Año 2009 Semestre $\beta$)}
+\begin{enumerate}
+\item Sea $(G,\star)$ un grupo, y sea $(H,\star)$ un subgrupo de $(G,\star)$. La traslación izquierda de $H$ en $G$ con respecto a un $x\in G$ dado es definida como $x\star H=\{g\in G\;|\;(\exists\;h\in H)\; g=x\star h\}.$\\ 
+Pruebe que:
+\begin{enumerate}
+\item[(i)] Para cada $x\in G$ vale: $x\in H$ sy y sólo si $x\star H=H$.
+\item[(ii)] Para cada $y \in G\setminus H$ vale: $(y\star H)\cap H=\phi$.
+\end{enumerate}
+\item Sea $(G,\star)$ un grupo con neutro $e$ tal que $x\star x=e$ para cada $x\in G$.
+\begin{enumerate}
+\item[(i)] Pruebe que entonces $(G,\star)$ es Abeliano.
+\item[(ii)] Suponiendo que $|G|$ es finito y que $|G|>2$, pruebe que el orden de $G$ es múltiplo de 4.
+\end{enumerate}
+\end{enumerate}
+
+
+
+\item \textbf{(P2 Control 5, Año 2010)}\\
+Sea $p\in\NN$, fijo, considere el conjunto de todos los múltiplos enteros de $p$. Se denota este conjunto por $p\Z$.
+\begin{enumerate}
+\item[(i)] Demuestre que $(p\Z,+,*)$ es un anillo conmutativo con unidad donde $+$ es la suma usual y $*$ está definido por
+$$\forall\;x,\,y\in p\Z,\quad x*y=\frac{xy}{p}.$$
+\item[(ii)] Demuestre que $(\Z,+,\,\cdot\,)$ (el anillo de los enteros) es isomorfo a $(p\Z,+,*)$.
+\end{enumerate}
+
+\item \textbf{(P3 (i) Control 5, Año 2010)}
+\begin{enumerate}
+\item[(i)] Sea $S=\{z\in\C\;|\;|z|=1\}$. Demuestre que $(S,\,\cdot\,)$ es subgrupo de $(\C\setminus\{0\},\,\cdot\,)$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 5, Año 2011)}\\
+Sea $(A,+,\,\cdot \,)$ un anillo. Un subconjunto $I\subseteq A$ se dirá \textbf{Ideal} de $A$ si y sólo si:
+\begin{enumerate}
+\item[(i)] $(I,+)$ es subgrupo de $(A,+)$.
+\item[(ii)] $(\forall\;a\in A)\,(\forall\;b\in I)\; a\cdot b\in I\,\wedge\,b\cdot a\in I.$\\
+\item[(a)] Sea $F:(A,+,\,\cdot\,)\longrightarrow (B,\oplus,\odot)$ un morfismo de anillos. Demuestre que la preimagen $F^{-1}(\{0_B\})$ es un Ideal de $A$, donde $0_B\in B$ es el neutro para $\oplus$ en $B$.
+\item[(b)] Sea $(A,+,\,\cdot\,)$ un anillo con unidad $1\in A$, e $I$ un ideal de $A$.
+\begin{enumerate}
+\item[b.1)] Demuestre que si $1\in I$, entonces $I=A$.
+\item[b.2)] Demuestre que si $\exists\;x\in I$ invertible para $\cdot$ en $A$, entonces $I=A$.
+\end{enumerate}
+\end{enumerate}
+
+\item \textbf{(P2 Control 5, Año 2011)}\\
+Sea $(A,+,\,\cdot\,)$ un anillo conmutativo.
+\begin{enumerate}
+\item Si $a\in A$ es un divisor de cero y $b\in A$ cualquiera, demuestre que si $a\cdot b\neq 0$, entonces $a\cdot b$ es un divisor de cero.
+\item Demuestre que si el producto de dos elementos de $A$ es un divisor de cero, entonces al menos uno de ellos es un divisor de cero.
+\end{enumerate}
+
+\item \textbf{(P1 (a) Control 5, Año 2012)}\\
+Sean 
+\begin{align*}
+G&=\{(n,m)\;|\; n,\,m\in\Z\} \\
+G^{\prime}&=\{2^a 3^b \;|\;a,\,b\in\Z \}
+\end{align*}
+y se define la suma de pares en $G$ como
+$$(n,m)+(p,q)=(n+p,\,m+q)$$
+\begin{enumerate}
+\item[(i)] Demuestre que $(G^{\prime},\,\cdot\,)$ es subgrupo de $(\R\setminus\{0\},\,\cdot\,)$ donde $\cdot$ es el producto en $\R$.
+\item[(ii)] Observe (no lo demuestre) que $(G,+)$ es grupo. Demuestre que $(G,+)$ es isomorfo a $(G^{\prime},\,\cdot\,)$.
+\end{enumerate}
+
+\item \textbf{(P2 Control 5, Año 2012)}\\
+Sea $(A,+,\,\cdot\,)$ un anillo conmutativo con unidad. Se define $G\subseteq A$ por
+$$G=\{a\in A\;|\; a \mbox{ tiene inverso para } \cdot\,\}.$$
+\begin{enumerate}
+\item[(i)] Mostrar que $(G,\,\cdot \,)$ es grupo Abeliano.
+\item[(ii)] Sea $H=\{a^2\;|\;a\in G\}$. Pruebe que $H$ es subgrupo de $G$.
+\item[(iii)] Si $A=\Z_8$, encuentre $G$ y $H$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 5, Año 2013)}\\
+Considere $(\Z_{5},\cdot_{5})$
+\begin{enumerate}
+\item[(i)] Construya la tabla para la operación $\cdot_{5}$ en $\Z_5$
+\item[(ii)] Expliqué por que $(\Z_5,\cdot_5)$ no es un grupo.
+\item[(iii)] Muestre que $(\Z_5 \setminus \{[0]\}, \cdot_5)$ es un grupo abeliano.
+\item[(iv)] Encuentre los subgrupos de $(\Z_5\setminus\{[0]\},\cdot_5)$. Explique.
+\end{enumerate}
+
+\item \textbf{(P2 Control 5, Año 2013)}
+\begin{enumerate}
+\item Sea $(S,\ast)$ una estructura algebraica dado por la siguiente tabla:
+\begin{figure}[h]
+\centering
+\begin{tabular}{c|ccc}
+$\ast$ & $e$ & $a$ & $b$ \\ \hline
+$e$ & $e$ & $a$ & $b$\\
+$a$ & $a$ & $e$ & $e$\\
+$b$ & $b$ & $e$ & $a$
+\end{tabular}
+\end{figure}
+
+Determine si $\ast$ es asociativa en $S$
+
+\item Sea $(A,+,\cdot)$ un anillo conmutativo con unidad tal que $|A|$ es finito.
+\begin{enumerate}
+\item[b.1)] Muestre que si $a \in A$ es divisor de cero, entonces $a$ no es invertible.
+\item[b.2)] Sea $x\in A$, no invertible, $x\neq 0$ (cero del anillo).
+\begin{enumerate}
+\item[(i)] Muestre que $\forall \; k \in \NN$, $x^k\neq 1$ (unidad en $A$).
+\item[(ii)] Muestre que $\exists \;n,m \in \NN, n\neq m$ tales que $x^n=x^m$.
+\item[(iii)] Muestre que $\exists \; r,s \in \NN$ tales que $x^s(1-x^r)=0$.
+\item[(iv)] Concluya que $x$ es divisor de cero.
+\end{enumerate} 
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\end{document}

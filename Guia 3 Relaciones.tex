@@ -1,0 +1,364 @@
+\documentclass[10pt]{article}
+\usepackage[left=1.5cm,top=1.5cm,right=1.5cm, bottom=1.5cm,letterpaper, includeheadfoot]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{graphicx}
+\usepackage{lmodern,url}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{framed}
+\usepackage[makeroom]{cancel}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{graphicx,todo}
+\usetikzlibrary{matrix}
+\usepackage{multicol}
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+\fancyhf{}
+\lhead{\footnotesize\itshape\bfseries\rightmark}
+\rhead{\footnotesize\itshape\bfseries\leftmark}
+}
+
+
+% macros
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Rel}{\mathcal{R}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\M}{\mathcal M}
+\newcommand{\U}{\mathcal U}
+\newcommand{\MR}{\mathcal M_{nn}(\R)}
+\newcommand{\MC}{\mathcal M_{nn}(\C)}
+\newcommand{\id}{\operatorname{Id}} %función identidad
+%Conjunto de las partes, 2 parámetros
+\newcommand{\pr}[1]{\cur{P}(#1)}
+
+\newcommand{\MK}{\mathcal M_{nn}(\K)}
+\newcommand{\ds}{\displaystyle}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\rango}{r}
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem*{teo*}{Teorema}
+\newtheorem{lem}{Lema}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+%Para poner las letras cursivas, en modo matemático
+\newcommand{\cur}[1]{\mathcal{#1}}
+
+
+\theoremstyle{definition}
+\newtheorem*{defi}{Definici\'on}
+\newtheorem{solu}{Solución}
+
+\newenvironment{sol}{\begin{framed}
+\begin{solu}
+\leavevmode
+}{\end{solu}\end{framed}}
+
+
+
+\newcommand{\cin}{\operatorname{cint}}
+\newcommand{\horrule}[1]{\noindent\rule{\linewidth}{#1}}
+
+\begin{document}
+%Encabezado
+\fancyhead[L]{Facultad de Ciencias Físicas y Matemáticas}
+\fancyhead[R]{Universidad de Chile} 
+
+   \begin{minipage}[t]{7 cm}
+   \vspace{-6.0ex}
+\textbf{MA1101-1 y 6} Introducción al Álgebra\\
+\textbf{Auxiliar:} Matías Azócar y Marcelo Navarro
+   \end{minipage}%
+   \hfill
+   \begin{minipage}[t]{3.2 cm}
+     \vspace{-8.5ex}
+     \raggedright\includegraphics[scale=0.15]{img/fcfm2.png} 
+   \end{minipage}
+\begin{center}
+\LARGE\textbf{Guía 2: Relaciones} \\
+\vspace{3 mm}
+
+\normalsize 6 de Mayo del 2018
+\end{center}
+
+
+\begin{enumerate}[label=\textbf{P\arabic*.-}]
+
+\item \textbf{(P2 Control 2, Año 1997)}\\
+Sea $\cur{Q}$ una relación en $\R$. Se define el conjunto $A=\{f:\N\longrightarrow \R \;|\; f \mbox{ es función}\}$. \\ Además definimos la relación $\cur{R}$ en $A$ por:\\ 
+$$f\,\cur{R}\,g\; \Longleftrightarrow \; (\exists \; n\geq 0)\;(\forall \; k\in\{0,\ldots,n\})\; f(k)\,\cur{Q}\,g(k)$$
+\begin{enumerate}
+\item Pruebe que $f\,\cur{R}\,g \; \Longleftrightarrow \; f(0)\,\cur{Q}\,g(0)$.
+\item Probar que si $\cur{R}$ es una relación de orden, entonces $\cur{Q}$ es una relación de orden.
+\item Probar que si $\cur{Q}$ es una relación de equivalencia, entonces $\cur{R}$ es también una relación de equivalencia. Además pruebe que la función $\varphi: A/\cur{R} \longrightarrow \R/\cur{Q}$ que asocia a cada clase de equivalencia $[f]_{\cur{R}}$ la clase de $f(0)$ con respecto a $\cur{Q}$, es decir, $\varphi([f]_{\cur{R}})=[f(0)]_{\cur{Q}}$, es una inyección.
+\end{enumerate}
+
+\item \textbf{(P3 Control 2, Año 1998)}\\
+Sea $A$ un conjunto no vacío y $f:A\longrightarrow A$ una función biyectiva. Denotaremos por $f^{-1}$ a la inversa de $f$. Para $n\geq 1$ definimos $f^{(n)}$ como la composición de $f$ con ella misma $n$ veces y si $n<0$ definimos $f^{(n)}=(f^{-1})^{(|n|)}$. Si $n=0$, ponemos $f^{(0)}=\id_{A}$.\\
+Considere la relación en $A$ definida como:
+$$x\,\cur{R}\,y \;\; \Longleftrightarrow \;\; (\exists\;n\in\Z)\; f^{(n)}(x)=y$$
+\begin{enumerate}
+\item Probar que $\cur{R}$ es una relación de equivalencia.
+\item Considere $p\in\N\setminus \{0\}$ fijo. Si $A=\Q$ \  y \ $f:\Q\longrightarrow \Q$. Se define por $f(p)=p\cdot q$, calcular la clase de equivalencia de 0 y de 1 con respecto a $\cur{R}$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 2, Año  1999)}\\
+Considere el conjunto $A=\Z\times \Z$. Se define la relación $\cur{R}$ en $A$ por:
+$$(a_1,a_2)\,\cur{R}\,(b_1,b_2) \; \Longleftrightarrow \; a_1+a_2-b_1-b_2=2k \mbox{ para un cierto } k\in\Z$$
+\begin{enumerate}
+\item Pruebe que $\cur{R}$ es una relación de equivalencia.
+\item Calcular explícitamente $[(0,0)]_{\cur{R}}$ y $[(1,0)]_{\cur{R}}$.
+\item Pruebe que $A=[(0,0)]_{\cur{R}}\cup [(1,0)]_{\cur{R}}$.
+\item \textbf{[Propuesto, es media difícil]} Pruebe que existe una biyección $f:[(1,0)]_{\cur{R}} \longrightarrow [(0,0)]_{\cur{R}}$.
+\end{enumerate}
+
+\item \textbf{(P2 (i) Control 2, Año 1999)}\\
+Considere una relación de orden $\cur{R}$ definida sobre el conjunto $E$. Definimos una nueva relación $\cur{R}^*$ en $E\times E$ por:
+$$(a,b)\,\cur{R}^*\,(c,d) \; \Longleftrightarrow \; (a\neq c \, \wedge \, a\,\cur{R}\,c) \vee (a=c \, \wedge \, b\,\cur{R}\,d)$$
+Pruebe que $\cur{R}^*$ es una relación de orden.
+%\item \textbf{(P1 (ii) Control 2, Año 2000)}\\
+%Sea $\cur{R}$ la relación en $\Z^{2}=\Z\times\Z$ definida por:
+%$$(a,b)\,\cur{R}\,(c,d) \; \Leftrightarrow \; a+b \equiv_2 c+3d$$
+%\begin{enumerate}
+%\item Pruebe que $\cur{R}$ es de equivalencia.
+%\item Muestre que $[(0,0)]_{\cur{R}}\cup [(1,0)]_{\cur{R}} = \Z^2$ y que $[(0,0)]_{\cur{R}}\cap [(1,0)]_{\cur{R}}=\phi$.
+%\end{enumerate} 
+
+%\item \textbf{(P2 (i) Control 2, Año 2000)}
+%Sea $\cur{S}$ una relación en $E$ refleja. Se define la relación $\cur{R}$ en $E$ por:
+%$$a\,\cur{R}\,b \; \Longleftrightarrow \; (\exists \; n\in\N)\,(\exists \; b_0,\, \ldots,\, b_{n+1} \in E)\; \mbox{ tal que } \; b_0=a_0,\, b_{n+1}=c \, \wedge \, b_i\,\cur{S}\,b_{i+1} \;(\forall \; i\in \{0,\ldots,n\}).$$
+%Pruebe que $\cur{R}$ es una relación refleja y transitiva.
+
+\item \textbf{(P2 Control 2, Año 2002)}\\
+Sean:\\
+$\cur{F}=\{f:\N\longrightarrow \Z \mbox{ tal que } (\forall \; i\in\N)\; |f(i+1)-f(i)|=1\}$\\
+$\cur{F}_0=\{f\in\cur{F} \mbox{ tal que } f(0)=0\}$\\
+Se definen en $\cur{F}$ las relaciones $\leq$ y $\sim$ que siguen:\\
+$f\,\leq\,g \; \Longleftrightarrow \; (\forall \; i\in\N)\, f(i)\leq g(i)$\\
+$f\,\sim\,g \; \Longleftrightarrow \; (\exists \; k\in\Z)\,(\forall \; i\in\N)\, f(i)-g(i)=k$
+\begin{enumerate}
+\item Demuestre que la relación $\sim$ es de equivalencia.
+\item Demuestre que $(\forall \; f\in\cur{F})\,(\exists\;g\in\cur{F}_0)\;f\sim g.$
+\item Demuestre que existe $h\in\cur{F}_0$ tal que $(\forall \; f\in\cur{F}_0)\,h\leq f.$
+\item Sean $f,\,g\in\cur{F}_0$ arbitrarios. Demuestre que:
+$$(\forall \; i\in\N)\,(\exists \; k\in\Z)\,f(i)-g(i)=2k.$$
+\end{enumerate}
+
+%\item \textbf{(P3 Control 2, Año 2002)}\\
+%Sea $f:A\longrightarrow A$ una función arbitraria. Se define por recurrencia, para todo $i\in\N$, la función que se denota $f^{i}$ y que corresponde a componer $i$ veces la función $f$ del siguiente modo:
+%\begin{eqnarray*}
+%f^0&=&\id\\
+%(\forall \; i\geq 1)\; f^{i} %&=&f^{i-1}\circ f
+%\end{eqnarray*}
+%Asuma conocida las siguientes propiedades:
+%\begin{itemize}
+%\item $(\forall \; i\geq 1) \; f^i=f\circ f^{i-1}$
+%\item $(\forall \; i\in\N)\,(\forall \; j\in\N) \; f^{i+j}=f^i\circ f^j$
+%\item $(\forall \; i\in\N)\,(\forall \; j\in\N) \; f^{ij}=(f^i)^{^{j}}$
+%\end{itemize}
+%Sean $n\in\N, \; n\geq 1\,$ y $S=\{x\in\N \; |\; 1\leq x\leq n\}.$
+%Fijemos $k\in\N, \; 1\leq k\leq n$, y consideremos una función $h:S\longrightarrow S$ que satisface: $(\forall \; x\in S)\; h^{k}(x)=x.$.
+%\begin{enumerate}
+%\item Sean $x,\, y\in S$ y $j\in\N$ tal que $h^j(x)=y$. Demuestre que existe $r\in\N$ tal que $0\leq r\leq  k$ de modo tal que $h^{r}(x)=y$.\\
+%\textbf{Observación:} Puede usar el siguiente Teorema: $$(\forall \; a,b \in\N,\; b\neq 0)\;(\exists ! \; q,r\in\N)\; r<b \,\wedge \, a=qb+r$$
+%\item Se define en $S$ la relación $\sim$ siguiente: 
+%$\; x\sim y \; \Longleftrightarrow \; (\exists \; j\in\N)\; h^j(x)=y.$\\
+%Demuestre que 
+%\begin{enumerate}
+%\item[(i)] $\sim$ es refleja
+%\item[(ii)] $\sim$ es simétrica
+%\item[(iii)] $\sim$ es transitiva
+%\end{enumerate}
+%\end{enumerate}
+
+\item \textbf{(P1 (a) Control 2, Año 2003)}\\
+Sea $A$ el conjunto de todas las relaciones binarias en $\R$. Sobre $A$ definamos la relación binaria $\Omega$ siguiente:\\
+Sean $\cur{R}_1,\, \cur{R}_2 \in A$, entonces
+$$\cur{R}_1\,\Omega\, \cur{R}_2 \; \Longleftrightarrow \: \left[ (\forall \; x,y\in\R)\;(x\,\cur{R}_1 \, y \, \Rightarrow \, x\,\cur{R}_2\,y)\right]$$
+Pruebe que $\Omega$ es de orden parcial en $A$. (Esto es, demuestre que es una relación de orden sobre $A$)
+
+%\item \textbf{(P1 (a) Control 2, Año 2004)}\\
+%Sean $E_1$ y $E_2$ dos conjuntos no vacíos y $\cur{R}_1$ y $\cur{R}_2$ relaciones de orden definidas en $E_1$ y $E_2$ respectivamente:
+%\begin{enumerate}
+%\item[(i)] Demuestre que $\cur{R}$ definida en $E_1\times E_2$ por:
+%$(x,y)\, \cur{R} \, (u,v)\; \Longleftrightarrow \; \left[ x\cur{R}_1 u \, \wedge \, y\cur{R}_2 v \right]$ es relación de orden en $E_1\times E_2$.
+%\item[(ii)] Si $|E_1|\geq 2$ y $|E_2|\geq 2$ y $\cur{R}_1,\, \cur{R}_2$ son relaciones de orden total, pruebe que $\cur{R}$ es sólo de orden parcial.
+%\end{enumerate}
+
+\item \textbf{(P3 (i),(ii) Control 2, Año 2004)}\\
+Sea $p\in\Z$, $p\geq 2$. Se define en $\Q^{+}=\{q\in\Q\;|\;q>0\}$ la relación $\Omega_{p}$ por:
+$$ x\,\Omega_p \, y \; \Longleftrightarrow \; (\exists \; \alpha \in \Z) \;\, \frac{x}{y}=p^{\alpha}$$
+\begin{enumerate}
+\item[(i)] Demostrar que $\Omega_p$ es relación de equivalencia en $\Q^{+}$.
+\item[(ii)] Escriba por extensión el siguiente conjunto
+$$A=\{q\in[1]_{\Omega_2} \;|\; \frac{1}{8}\leq q \leq 8\}$$
+\end{enumerate}
+
+%\item \textbf{(P3 Control 2, Año 2005)}\\
+%Sea $A$ un conjunto no vacío y $f: A\longrightarrow A$ una función que satisface la condición $\circledast$ siguiente: $(\exists \; n\in\N\setminus\{0\})$ tal que $f^{(n)}=\id_{A}$, donde para $n\geq 1$ definimos $f^{(n)}=f\circ f\circ \ldots \circ f$, es decir, la composición de $f$ con si misma $n$ veces.
+%Se define en $A$ la relación $\cur{R}$ por:
+%$$x\,\cur{R}\,y \; \Longleftrightarrow \; (\exists \; k\in\{1,2,\ldots,n\}) \; f^{(k)}(x)=y$$
+%\begin{enumerate}
+%\item Demuestre que $\cur{R}$ es relación de equivalencia.
+%\item Considere $A=\{0,1\}^{3}=\{0,1\}\times \{0,1\}\times \{0,1\}$ \ y \ $f:A\longrightarrow A$ definida por \\ $f(x_1,x_2,x_3)=(x_2,x_3,x_1).$
+%\begin{enumerate}
+%\item[b.1)] Pruebe que $f$ satisface $\circledast$.
+%\item[b.2)] Determine y describa todas las clases de equivalencia inducidas por $\cur{R}$ en $A$.
+%\end{enumerate}
+%\end{enumerate}
+
+\item \textbf{(P3 Control 2, Año 2006)}
+\begin{enumerate}
+\item Sea $E$ un conjunto y $A\neq \phi$ un subconjunto fijo de $E$. Se define en $\pr{E}$ la relación $\cur{R}$ por:
+$$ X\,\cur{R}\,Y \; \Longleftrightarrow \; A\cap X=A\cap Y$$
+\begin{enumerate}
+\item[a.1)] Demuestre que $\cur{R}$ es relación de equivalencia.
+\item[a.2)] Demuestre que el conjunto cuociente $\pr{E}/\,\cur{R}=\{[X]\;|\;X\in\pr{A}\}$.
+\item[a.3)] Demuestre que para $X,\,Y \in \pr{A}$ se tiene que $X\neq Y \; \Rightarrow \; \left[X\right] \neq \left[Y\right].$
+\end{enumerate}
+\item Sea $f:A\longrightarrow B$ una función y $\tau$ una relación de orden en $B$. Se define la relación $\Omega$ en $A$ como $x\,\Omega \, y \; \Leftrightarrow \; f(x)\,\tau \, f(y)$. Demuestre que $\Omega$ es relación de orden en $A$, si y sólo si, $f$ es inyectiva.
+\end{enumerate}
+\item \textbf{(P2 Control 3, Año 2007)}\\
+Sea $A\neq \phi$ un conjunto y $\cur{R}$ una relación en $A$. Se define la relación $\cur{R}^{\ast}$ en $A\times A$ por:
+$$(a,b)\,\cur{R}^{*}\,(a^{\prime},b^{\prime}) \; \Leftrightarrow \; (a \, \cur{R}\, a^{\prime}) \wedge (b \, \cur{R} \, b^{\prime})$$
+\begin{enumerate}
+\item Demuestre que si $\cur{R}$ es de orden, entonces $\cur{R}^*$ también lo es.
+\item Muestre que si $A$ tiene al menos dos elementos y $\cur{R}$ es un orden total, entonces $\cur{R}^*$ es sólo un orden parcial.
+\item Demuestre que si $\cur{R}$ es de equivalencia, entonces $\cur{R}^*$ también lo es.
+\item Para $(a,b)\in A\times A$, demuestre que
+$$[(a,b)]_{\cur{R}^*}=[a]_{\cur{R}}\times [b]_{\cur{R}}.$$
+\end{enumerate}
+
+\item \textbf{(P1 Control 3, Año 2008)}
+\begin{enumerate}
+\item Se define la relación $\cur{R}$ en $\R\setminus \{0\}$ por:
+$$x\,\cur{R}\,y \; \Longleftrightarrow \; xy>0$$
+Demuestre que $\cur{R}$ es una relación de equivalencia. Calcule el conjunto cuociente $(\R\setminus\{0\})/ \cur{R}$.
+\item Sea $E$ un conjunto no vacío y considere $k\in\pr{E}$ fijo, con $K\neq \phi$. Se define en $\pr{E}$ la relación $\cur{R}_{K}$ por:
+$$A\,\cur{R}_{K} \, B \; \Longleftrightarrow \; B\cap K \subseteq A.$$
+\begin{enumerate}
+\item Pruebe que $\cur{R}_{K}$ es refleja y transitiva.
+\item Proponga un conjunto $K\in \pr{E}$ de modo que $\cur{R}_{K}$ sea una relación de \textbf{orden}. Justifique.
+\end{enumerate}
+\end{enumerate}
+
+\item \textbf{(P2 Control 3, Año 2009)}\\
+Sea $E$ un conjunto y $A\neq\phi$ un subconjunto fijo de $E$. Se define en $\pr{E}$ la relación $\cur{R}$ por:
+$$X\,\cur{R}\,Y \; \Longleftrightarrow \; A\setminus X=A \setminus Y.$$
+\begin{enumerate}
+\item[(i)] Demuestre que $\cur{R}$ es una relación de equivalencia.
+\item[(ii)] Demuestre que el conjunto cuociente
+$$\pr{E}/\cur{R}=\{[X]_{\cur{R}}\;|\;X\in\pr{A}\}.$$
+\end{enumerate}
+
+
+
+
+
+\item %\textbf{(P2 Control 3, Año 2010)}\\
+Sea $\cur{R}$ una relación definida de $\Z\times(\N\setminus\{0\})$ en $\Z\times(\N\setminus\{0\})$ por:
+$$(a,b)\,\cur{R}\,(c,d) \; \Longleftrightarrow \; ad=bc$$
+\begin{enumerate}
+\item Demuestre que $\cur{R}$ es una relación de equivalencia y determine y determine $[(0,2)]_{\cur{R}}$, es decir, la clase de equivalencia de $(0,2)\in \Z\times(\N\setminus\{0\})$.
+\item En $\Z\times(\N\setminus\{0\})/\cur{R}$ (conjunto cuociente) se define la relación $\Omega$ por: $$[(a,b)]_{\cur{R}}\,\Omega\,[(c,d)]_{\cur{R}}\;\Longleftrightarrow \; ad\leq bc.$$ Demuestre que $\Omega$ es relación de orden y determine si es un orden total o parcial.
+\end{enumerate}
+
+\item \textbf{(P2 Control 3, Año 2011)}\\
+Se considera en el conjunto $\Z\times\Z$ la relación $\cur{R}$ por:
+$$(a,b)\,\cur{R}\,(c,d) \; \Leftrightarrow \; \mbox{ tal que } \; a\equiv_2 c \wedge b\equiv_3 d$$
+\begin{enumerate}
+\item[(i)] Demuestre que $\cur{R}$ es una relación de equivalencia.
+\item[(ii)] Encuentre el conjunto cuociente $(\Z\times\Z)/\cur{R}$.
+\end{enumerate}
+
+\item \textbf{(P1 Control 3, Año 2012)}
+%\begin{enumerate}
+\item Se define en $\Z$ la relación $\cur{R}$ por:
+$$m\,\cur{R}\,n \; \Leftrightarrow \; m^2-n^2 \mbox{ es múltiplo de } 3.$$
+\begin{enumerate}
+\item[(i)] Demuestre que $\cur{R}$ es una relación de equivalencia.
+\item[(ii)] Determine 4 elementos de $[0]_{\cur{R}}$ y de $[1]_{\cur{R}}$.
+\end{enumerate}
+%\item Sea $\cur{F}=\{(A,f)\;|\; A\subseteq \R \wedge f:A \longrightarrow \R, \mbox{ es función}\}.$ Se define en $\cur{F}$ la relación $\Omega$ por:
+%$$(A,f)\,\Omega\,(B,g) \; \Leftrightarrow \; \{A\subseteq B \wedge (\forall \; x\in A)\,f(x)=g(x)\}.$$
+%\begin{enumerate}
+%\item[(i)] Demuestre que $\Omega$ es una relación de orden.
+%\item[(ii)] ¿Es $\Omega$ un orden total en $\cur{F}$? Justifique.
+%\end{enumerate}
+%\end{enumerate}
+
+\item \textbf{(P2 (a) Control Recuperativo, Año 2012)}\\
+En $\R\setminus\{0\}$ se define la relación $\Omega$ por
+$$a\,\Omega\,b\;\Longleftrightarrow \; a+\frac{1}{a}=b+\frac{1}{b}.$$
+\begin{enumerate}
+\item[(a.1)] Demuestre que $\Omega$ es relación de equivalencia.
+\item[(a.2)] Determine la clase de equivalencia de $a\in\R\setminus\{0\}$ y describa el conjunto cociente.
+\end{enumerate}
+
+\item \textbf{(P2 Control 3, Año 2013)}
+\begin{enumerate}
+\item Se define en $\R$ la relación $\Psi$ por
+$$x\,\Psi\,y \; \Leftrightarrow \; (\exists \; n\in \N\cup\{0\})\; \mbox{ tal que } \; y-x=n.$$
+\begin{enumerate}
+\item[(i)] Demuestre que $\Psi$ es una relación de orden.
+\item[(ii)] Indique si es una relación de orden parcial o total. Justifique.
+\end{enumerate}
+\item Considere ahora la relación $\Phi$ definida en $\R$ por
+$$x\,\Phi\,y \; \Leftrightarrow \; (\exists \; n\in\Z) \; \mbox{ tal que } \; y-x=n.$$
+\begin{enumerate}
+\item[(i)] Demuestre que $\Phi$ es una relación de equivalencia.
+\item[(ii)] Dado $p\in\Z$, calcule la clase de equivalencia $[p]_{\Phi}$.
+\end{enumerate}
+\end{enumerate}
+
+    \item \textbf{[Relaciones y funciones]} Sean $X,Y$ conjuntos y $f:X \to Y$ una función.
+        \begin{enumerate}
+            \item Sea $\mathcal{R}$ una relación de equivalencia definida sobre $Y$. Se define en $X$ la relación preimagen de $\mathcal{R}$ que notamos $f^{-1}(\mathcal{R})$ por:
+                    $$ x_{1}~ f^{-1}(\mathcal{R})~ x_{2} \iff f(x_1) ~ \mathcal{R} ~ f(x_2) $$
+                \begin{enumerate}
+                    \item Probar que $f^{-1}(\mathcal{R})$ es una relación de equivalencia en $X$
+                    \item Probar que $[x]_{f^{-1}(\mathcal{R})}=f^{-1}([f(x)]_{\mathcal{R}})$ para cada $x \in X$\\
+                    \textbf{Indicación}: Notar que hay que probar una igualdad de conjuntos y que $[f(x)]_{\mathcal{R}}$ es un subconjunto de $Y$.
+                \end{enumerate}
+            
+            \item Suponga ahora que $\mathcal{R'}$ es una relación de equivalencia en $X$ y que $f$ es epiyectiva. Definimos en $Y$ la relación imagen por:
+                    $$ y_1 ~ f(\mathcal{R'}) ~ y_2 \iff \exists x_1 ,x_2 \in X, ~ f(x_1)=y_1 ~~ \land ~~ f(x_2)=y_2 ~~ \land ~~ x_1 ~\mathcal{R'}~ x_2 $$ 
+                \begin{enumerate}
+                    \item Probar que si $f$ es inyectiva entonces $f(\mathcal{R'})$ es de equivalencia y además pruebe que $\mathcal{R'}=f^{-1}(f(\mathcal{R'}))$, es decir, $\mathcal{R'}$ es igual a la relación preimagen de $f(\mathcal{R'})$
+                    \item ¿Que ocurre si $f$ no fuera inyectiva?\\
+                    \textbf{Propuesto:} Defina $f$ tal que no sea inyectiva y $f(\mathcal{R'})$ no esa de equivalencia
+                \end{enumerate}
+        \end{enumerate}
+
+\end{enumerate}
+            
+
+%\begin{figure}[H]
+%  \centering
+%\includegraphics[scale=0.2]{MemeAux7.jpeg}
+%{\caption*{``No quiero morir, señor Matamala. Lo siento...''}}
+%   \label{fig:my_label}
+% \end{figure}
+
+
+\end{document}	
